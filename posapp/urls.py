@@ -26,7 +26,7 @@ urlpatterns = [
     
     
     # # Deleting Things
-    # path('custTable/delete/<int:id>/', views.delete, name='delete'),
+    path('deleteCust/<int:id>/', views.deleteCust, name='delete'),
     path('deleteEmp/<int:id>/', views.deleteEmp, name='deleteEmp'),
     # path('deleteProduct/<int:id>/', views.deleteProduct, name='deleteProduct'),
     

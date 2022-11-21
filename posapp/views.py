@@ -184,6 +184,12 @@ def deleteEmp(request, id):
     member.delete()
     return HttpResponseRedirect(reverse('empTable'))
 
+@login_required
+def deleteCust(request, id):
+    member = AuthUser.objects.filter(id=id)
+    member.delete()
+    return HttpResponseRedirect(reverse('custTable'))
+
 
 @login_required
 def deleteProduct(request, id):
