@@ -180,7 +180,7 @@ def delete(request, id):
 
 @login_required
 def deleteEmp(request, id):
-    member = Employee.objects.get(emp_id=id)
+    member = AuthUser.objects.filter(id=id)
     member.delete()
     return HttpResponseRedirect(reverse('empTable'))
 

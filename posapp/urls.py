@@ -27,7 +27,7 @@ urlpatterns = [
     
     # # Deleting Things
     # path('custTable/delete/<int:id>/', views.delete, name='delete'),
-    # path('deleteEmp/<int:id>/', views.deleteEmp, name='deleteEmp'),
+    path('deleteEmp/<int:id>/', views.deleteEmp, name='deleteEmp'),
     # path('deleteProduct/<int:id>/', views.deleteProduct, name='deleteProduct'),
     
     # path('cart/', views.cart, name='cart'),
