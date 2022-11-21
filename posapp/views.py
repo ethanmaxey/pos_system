@@ -84,7 +84,7 @@ def add_customer(request):
         form = CustomerForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('custTable')
+            return redirect('/custTable')
     else:
         form = CustomerForm
         if 'submitted' in request.GET:
@@ -100,7 +100,7 @@ def add_product(request):
         form = ProductForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/add_product')
+            return redirect('/prodTable')
     else:
         form = ProductForm
         if 'submitted' in request.GET:
@@ -131,7 +131,14 @@ def custRep(request):
 # IDK why but when these next two methods get removed the dashboard no longer works
 @login_required
 def shop(request):
-    return render(request, 'shop.html')
+    mydata = Products.objects.all()
+    template = loader.get_template('shop.html')
+    context = {
+        'products': mydata,
+    }
+    return HttpResponse(template.render(context, request))
+
+
 
 @login_required
 def cart(request):
@@ -195,6 +202,9 @@ def deleteCust(request, id):
 def deleteProduct(request, id):
     member = Products.objects.get(id=id)
     member.delete()
+    context = {
+        'products': member,
+    }
     return HttpResponseRedirect(reverse('prodTable'))
 
 
