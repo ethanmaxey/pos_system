@@ -40,23 +40,15 @@ class RegisterForm(UserCreationForm):
 #         }
 
 
-class CustomerForm(ModelForm):
-    class Meta:
-        model = Customer
-        fields = '__all__'
-        labels = {
-            'cust_id': '',
-            'cust_name': '',
-            'cust_email': '',
-            'cust_dob': '',
-         }
+class CustomerForm(UserCreationForm):
+    email = forms.EmailField(required = True)
+    first_name = forms.CharField(required = True)
+    last_name = forms.CharField(required = True)
 
-        widgets = {
-            'cust_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Customer ID'}),
-            'cust_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Customer Name'}),
-            'cust_email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
-            'cust_dob': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date of Birth'}),
-         }
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
+         
 
         
 class ProductForm(ModelForm):

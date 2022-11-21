@@ -77,16 +77,16 @@ def add_emp(request):
 
 @login_required
 def add_customer(request):
-    form = CustomerForm
+    form = RegisterForm()
     submitted = False
 
     if request.method == 'POST':
-        form = CustomerForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/custTable')
     else:
-        form = CustomerForm
+        form = RegisterForm
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'customer.html', {'form': form, 'submitted': submitted})
