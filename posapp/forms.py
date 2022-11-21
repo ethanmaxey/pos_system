@@ -87,9 +87,9 @@ class EmployeeForm(UserCreationForm):
     email = forms.EmailField(required = True)
     first_name = forms.CharField(required = True)
     last_name = forms.CharField(required = True)
-    is_staff = forms.IntegerField(initial={"option":"1"})
+    is_staff = forms.IntegerField(required=True)
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2','is_staff']
 
