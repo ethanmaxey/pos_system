@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import Customer
+from .models import Customer, Products
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required = True)
@@ -59,28 +59,28 @@ class CustomerForm(ModelForm):
          }
 
         
-# class ProductForm(ModelForm):
-#     class Meta:
-#         model = PosappProduct
-#         fields = '__all__'
-#         labels = {
-#             'product_id': '',
-#             'product_name': '',
-#             'price': '',
-#             'category': '',
-#             'prod_amount': '',
-#             'instock': '',
-#          }
+class ProductForm(ModelForm):
+    class Meta:
+        model = Products
+        fields = '__all__'
+        labels = {
+            'product_id': '',
+            'product_name': '',
+            'price': '',
+            'category': '',
+            'prod_amount': '',
+            'instock': '',
+         }
 
-#         widgets = {
-#             'product_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product ID: 0000-9999'}),
-#             'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'}),
-#             'price': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Price: 00.00 - 1000.00'}),
-#             'category': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category'}),
-#             'prod_amount': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
-#             'instock': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Instock: 1 if yes, 0 if no'}),
+        widgets = {
+            'product_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product ID: 0000-9999'}),
+            'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'}),
+            'price': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Price: 00.00 - 1000.00'}),
+            'category': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category'}),
+            'prod_amount': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
+            'instock': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Instock: 1 if yes, 0 if no'}),
             
-#          }
+         }
 
 
 class EmployeeForm(UserCreationForm):

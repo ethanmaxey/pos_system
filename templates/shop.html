@@ -5,8 +5,9 @@
   </center>
   
   <div class="container d-flex justify-content-center mt-50 mb-50">
-    {% for prod in products %} 
+    
     <div class="row">
+      
       <div class="col-md-4 mt-2">
         <div class="card">
           <div class="card-body">
@@ -23,17 +24,17 @@
             </div>
 
             <h3 class="mb-0 font-weight-semibold">{{prod.price}}</h3>
-
+            {% for prod in products %} 
             <div>
-              <i class="fa fa-star star">something here</i>
+              <i class="fa fa-star star">{{prod.name}}</i>
               <i class="fa fa-star star">something here</i>
               <i class="fa fa-star star"></i>
               <i class="fa fa-star star"></i>
             </div>
             <button type="button" class="btn bg-cart btn-success"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
  
 {% endblock %}

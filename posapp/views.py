@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from .forms import CustomerForm, RegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import EmployeeForm
+from .forms import EmployeeForm, ProductForm
 
 from .models import Customer, Employee, Products, AuthUser
 from django.template import loader
@@ -187,7 +187,7 @@ def deleteEmp(request, id):
 
 @login_required
 def deleteProduct(request, id):
-    member = Products.objects.get(product_id=id)
+    member = Products.objects.get(id=id)
     member.delete()
     return HttpResponseRedirect(reverse('prodTable'))
 
