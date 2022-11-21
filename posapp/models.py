@@ -220,3 +220,17 @@ class Employee(models.Model):
     class Meta:
         managed = False
         db_table = 'employee'
+
+
+class Transactions(models.Model):
+    id = models.IntegerField(primary_key=True)
+    subtotal = models.CharField(max_length=45)
+    grandtotal = models.CharField(max_length=45)
+    tax = models.CharField(max_length=45)
+    dateadded = models.CharField(max_length=45)
+    empid = models.IntegerField()
+    cusid = models.ForeignKey('AuthUser', models.DO_NOTHING, db_column='cusid')
+
+    class Meta:
+        managed = False
+        db_table = 'transactions'

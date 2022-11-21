@@ -17,28 +17,20 @@
                     <th class="table-primary">Transaction Code</th>
                     <th class="table-primary">Employee ID</th>
                     <th class="table-primary">Customer ID</th>
-                    <th class="table-primary">Price</th>
-                    <th class="table-primary">Transaction Date</th>
+                    <th class="table-primary">Subtotal</th>
+                    <th class="table-primary">Grandtotal</th>
                     <th class="table-primary">Delete</th>
                 </tr>
             </thead>
             <tbody>
-                {% for pro in products %} 
+                {% for pro in transaction %} 
                 <tr>
                     <td>{{pro.id}}</td>
-                    <td>{{pro.name}}</td>
-                    <td>{{pro.price}}</td>
-                    <td>{{pro.status}}</td>
-                    <td>{{pro.category_id_id}}</td>
-                    <td>
-                        {% if pro.in_stock == 0 %} 
-                        No
-                        {% else  %}
-                        Yes
-                        {% endif %}
-
-                    </td>
-                    <td><a href="/deleteProduct/{{ pro.product_id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    <td>{{pro.empid}}</td>
+                    <td>{{pro.custid}}</td>
+                    <td>{{pro.subtotal}}</td>
+                    <td>{{pro.grandtotal}}</td>
+                    <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>
                 {%endfor%}
             </tbody>

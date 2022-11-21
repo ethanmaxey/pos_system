@@ -8,7 +8,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import EmployeeForm, ProductForm
 
-from .models import Customer, Employee, Products, AuthUser
+from .models import Customer, Employee, Products, AuthUser, Transactions
 from django.template import loader
 from django.urls import reverse
 #from posapp.models import Employee
@@ -30,10 +30,10 @@ def home(request):
     labels = []
     data = []
 
-    queryset = Employee.objects.order_by('-emp_pay_rate')[:5]
-    for emp in queryset:
-        labels.append(emp.emp_name)
-        data.append(emp.emp_pay_rate)
+    queryset = Products.objects.order_by('-price')[:5]
+    for prod in queryset:
+        labels.append(prod.name)
+        data.append(prod.price)
 
     return render(request, 'home.html', {
         'labels': labels,
@@ -219,4 +219,9 @@ def deleteProduct(request, id):
 
 @login_required
 def transactionTable(request):
-    return render(request, 'transactions.html')
+    mydata = Transactions.objects.all()
+    template = loader.get_template('transactions.html')
+    context = {
+        'transaction': mydata,
+    }
+    return HttpResponse(template.render(context, request))
