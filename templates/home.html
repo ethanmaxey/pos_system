@@ -1,0 +1,117 @@
+{% extends 'base.html' %} 
+<!-- {% block title %} Home Page {% endblock %} -->
+{% block content %} 
+
+{%if user.is_superuser%}
+<center>
+<div class="main-body">
+    <center>
+        {% comment %} <h1>Welcome to your account, {{user.username}}!</h1> {% endcomment %}
+    </center>
+    <div class="row">
+      {% comment %} Employee Hours Pie Chart Begin {% endcomment %}
+      <div id="container" style="width: 40%;" class="col-xs-6">
+        <h3>Employees By Pay Rate</h3>
+        <canvas id="hour-chart"></canvas>
+        <script>
+          var config = {
+            type: 'doughnut',
+            data: {
+              datasets: [{
+                data: {{data | safe}},
+                backgroundColor: [
+                '#2085ec', '#72b4eb', '#0a417a', '#73ffff', '#5c26ff', '#002db3', '#ffff26', '#4cff4c', '#ff00ff'
+                ],
+                label: 'Hours'
+              }],
+              labels: {{ labels|safe }}
+            },
+            options: {
+              responsive: true
+            }
+          };
+          window.onload = function() {
+            var ctx = document.getElementById('hour-chart').getContext('2d');
+            window.myPie = new Chart(ctx, config);
+          };
+        </script>
+      </div>
+    {% comment %} Employee Hours Pie Chart End {% endcomment %}
+
+    {% comment %} Employee Hours Pie Chart Begin {% endcomment %}
+
+    <div id="year-container" style="width: 40%;" class="col-xs-6">
+      <h3>Yearly Revenue</h3>
+      <canvas id="yearly-chart"></canvas>
+      <script>
+        var config1 = {
+          type: 'doughnut',
+          data: {
+            datasets: [{
+              data: [10000, 150000, 20000, 10000, 223442, 112234, 22445, 21454, 43546, 65357, 12334, 133656],
+              backgroundColor: [
+              '#2085ec', '#72b4eb', '#0a417a', '#73ffff', '#5c26ff', '#002db3', '#ffff26', '#4cff4c', '#ff00ff','#ff0000', '#0000ff', '#ff0080', '#73ffff', '#5c26ff'
+              ],
+              label1: 'Revenue'
+            }],
+            labels: ['Jan','Feb','Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov', 'Dec']
+          },
+          options: {
+            responsive: true
+          }
+        };
+      
+          var dtx = document.getElementById('yearly-chart').getContext('2d');
+          window.myPie = new Chart(dtx, config1);
+  
+      </script>
+    </div>
+
+    {% comment %} Bar Chart {% endcomment %}
+  <div id="bar-container"  class="col-md-8 offset-md-1 w-25" border=1>
+    <h3>Yearly Revenue</h3>
+    <canvas id="bar-chart"></canvas>
+    <script>
+      var config2 = {
+        type: 'bar',
+        data: {
+          datasets: [{
+            data: [10000, 150000, 20000, 10000, 223442, 112234, 22445, 21454, 43546, 65357, 12334, 133656],
+            backgroundColor: [
+            '#2085ec', '#72b4eb', '#0a417a', '#73ffff', '#5c26ff', '#002db3', '#ffff26', '#4cff4c', '#ff00ff','#ff0000', '#0000ff', '#ff0080', '#73ffff', '#5c26ff'
+            ],
+            label1: 'Revenue'
+          }],
+          labels: ['Jan','Feb','Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov', 'Dec']
+        },
+        options: {
+          responsive: true
+        }
+      };
+    
+        var etx = document.getElementById('bar-chart').getContext('2d');
+        window.mybar = new Chart(etx, config2);
+
+    </script>
+  </div>
+</div>
+
+{%elif user.is_staff%}
+<center>
+    <div class="main-body">
+    <center>
+        <h1>Welcome to your account, {{user.username}}!</h1>
+    </center>
+    <center>
+        <h3>Employee Data Here</h3>
+    </center>
+    {%else%}
+        <div class="main-body">
+            <center>
+                <h1>Welcome to your account, {{user.username}}!</h1>
+            </center>
+        <center>
+            <h3>Customer Data here</h3>
+        </center>
+    {%endif%}
+{% endblock %} 

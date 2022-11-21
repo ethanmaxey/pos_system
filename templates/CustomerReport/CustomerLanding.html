@@ -1,0 +1,49 @@
+{% extends 'home.html' %} 
+{% block content %} 
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Employees</title>
+</head>
+
+<div class="emp-body">
+    <center>
+        <h1>Customers List</h1>
+    </center>
+    <strong>
+        <a class = "add-btn" href = '/add_cust'> <button type="button" class="btn btn-success">Add Customer</button> </a>
+    </strong>
+    
+    <center>
+        <table border = 1 width = 1000px class="table table-inverse">
+            <thead>
+                <tr>
+                    <th class="table-primary">Customer ID</th>
+                    <th class="table-primary">First Name</th>
+                    <th class="table-primary">Last Name</th>
+                    <th class="table-primary">Email</th>
+                    <th class="table-primary">Username</th>
+                    <th class="table-primary">Delete</th>
+                </tr>
+            </thead>
+            {% for user in auth_user %} 
+            {% if user.is_staff != 1 %}
+            {% if user.is_superuser != 1 %}
+            <tbody>
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.username}}</td>
+                    {% comment %} <td><a href="/deleteEmp/{{ emp.emp_id }}"><button type="button" class="btn btn-danger">Delete</button></a></td> {% endcomment %}
+                </tr>
+            </tbody>
+            {%endif%}
+            {%endif%}
+            {%endfor%}
+        </table>
+    </center>
+</div>
+{%endblock%}

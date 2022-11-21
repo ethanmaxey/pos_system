@@ -1,0 +1,52 @@
+{% extends 'home.html' %} 
+{% block content %} 
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Products</title>
+</head>
+<div class = "emp-body">
+    <center>
+        <h1>Products Table</h1>
+    </center>
+    <strong>
+        <a class = "add-btn" href ="/add_product"> <button type="button" class="btn btn-success">Add Products</button> </a>
+    </strong>
+    <center>
+        <table border=1 width=1200px class="table table-inverse">
+            <thead class="thead-primary">
+                <tr>
+                    <th class="table-primary">Product ID</th>
+                    <th class="table-primary">Product Name</th>
+                    <th class="table-primary">Price</th>
+                    <th class="table-primary">Category</th>
+                    <th class="table-primary">Product Amount</th>
+                    <th class="table-primary">In Stock</th>
+                    <th class="table-primary">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pro in products %} 
+                <tr>
+                    <td>{{pro.id}}</td>
+                    <td>{{pro.name}}</td>
+                    <td>{{pro.price}}</td>
+                    <td>{{pro.status}}</td>
+                    <td>{{pro.category_id_id}}</td>
+                    <td>
+                        {% if pro.in_stock == 0 %} 
+                        No
+                        {% else  %}
+                        Yes
+                        {% endif %}
+
+                    </td>
+                    <td><a href="/deleteProduct/{{ pro.product_id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </center>
+</div>
+{% endblock %}
