@@ -48,12 +48,13 @@ def home(request):
     #         labels1.append(user.first_name)
     #         data1.append(prod.grandtotal)
 
-    queryset2 = AuthUser.objects.order_by('-is_active')[:5]
+    queryset2 = AuthUser.objects.order_by('-is_staff')[:10]
     for emp in queryset2:
         if emp.is_staff == 1:
-            labels2.append(emp.first_name)
-            a = emp.is_active * random.randint(1, 10) * 1000
-            data2.append(a) 
+            if emp.is_superuser == 0:
+                labels2.append(emp.first_name)
+                a = emp.is_active * random.randint(1, 10) * 1000
+                data2.append(a) 
 
     return render(request, 'home.html', {
         'labels': labels,
