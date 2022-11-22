@@ -342,11 +342,15 @@ def prodSubmit(request, id):
   description = request.POST['description']
   price = request.POST['price']
   dateupdated = request.POST['dateupdated']
+  amount = request.POST['amount']
+  
+  
   member = Products.objects.get(id=id)
   member.name = name
   member.description = description
   member.price = price
   member.dateupdated = dateupdated
+  member.amount = amount
   member.save()
   return HttpResponseRedirect(reverse('prodTable')) 
 

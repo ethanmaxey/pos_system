@@ -22,7 +22,7 @@
                     <th class="table-primary">Product Name</th>
                     <th class="table-primary">Price</th>
                     <th class="table-primary">Description</th>
-                    <th class="table-primary">In Stock</th>
+                    <th class="table-primary">Amount</th>
                     <th class="table-primary">Delete</th>
                     <th class="table-primary">Update</th>
                 </tr>
@@ -34,13 +34,7 @@
                     <td>{{pro.name}}</td>
                     <td>{{pro.price}}</td>
                     <td>{{pro.description}}</td>
-                    <td>
-                        {% if pro.in_stock == 0 %} 
-                        No
-                        {% else  %}
-                        Yes
-                        {% endif %}
-                    </td>
+                    <td>{{pro.amount}}</td>
                     <td><a href="/deleteProduct/{{ pro.id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
                     <td><a href="/updateProd/{{ pro.id }}"><button type="button" class="btn btn-danger">Update</button></a></td>
                 </tr>
