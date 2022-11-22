@@ -7,7 +7,7 @@ from .forms import CustomerForm, RegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import EmployeeForm, ProductForm
-
+import random
 from .models import Customer, Employee, Products, AuthUser, Transactions
 from django.template import loader
 from django.urls import reverse
@@ -29,15 +29,26 @@ def home(request):
     # Pay Rate Pie Chart
     labels = []
     data = []
+    labels2 = []
+    data2 = []
 
     queryset = Products.objects.order_by('-price')[:5]
     for prod in queryset:
         labels.append(prod.name)
         data.append(prod.price)
 
+    queryset2 = AuthUser.objects.order_by('-is_active')[:5]
+    for emp in queryset2:
+        if emp.is_staff == 1:
+            labels2.append(emp.first_name)
+            a = emp.is_active * random.randint(1, 10) * 1000
+            data2.append(a) 
+
     return render(request, 'home.html', {
         'labels': labels,
         'data': data,
+        'labels2': labels2,
+        'data2': data2,
     })
 
 

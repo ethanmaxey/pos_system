@@ -48,13 +48,13 @@
           type: 'doughnut',
           data: {
             datasets: [{
-              data: [10000, 150000, 20000, 10000, 223442, 112234, 22445, 21454, 43546, 65357, 12334, 133656],
+              data: {{ data2|safe }},
               backgroundColor: [
               '#2085ec', '#72b4eb', '#0a417a', '#73ffff', '#5c26ff', '#002db3', '#ffff26', '#4cff4c', '#ff00ff','#ff0000', '#0000ff', '#ff0080', '#73ffff', '#5c26ff'
               ],
               label1: 'Revenue'
             }],
-            labels: ['Jan','Feb','Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov', 'Dec']
+            labels: {{ labels2|safe }}
           },
           options: {
             responsive: true
