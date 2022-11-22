@@ -6,11 +6,14 @@ from django.shortcuts import render, redirect
 from .forms import CustomerForm, RegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import EmployeeForm, ProductForm
+from .forms import EmployeeForm,ProductForm
 import random
-from .models import Customer, Employee, Products, AuthUser, Transactions
+from .models import Customer, Employee,Products, AuthUser, Transactions
 from django.template import loader
 from django.urls import reverse
+
+from cart.cart import Cart
+
 #from posapp.models import Employee
 
 # from POS.models import Departments, Employees
@@ -32,7 +35,7 @@ def home(request):
     labels2 = []
     data2 = []
 
-    queryset = Products.objects.order_by('-price')[:5]
+    queryset =Products.objects.order_by('-price')[:5]
     for prod in queryset:
         labels.append(prod.name)
         data.append(prod.price)
@@ -104,16 +107,16 @@ def add_customer(request):
 
 @login_required
 def add_product(request):
-    form = ProductForm
+    form =ProductForm
     submitted = False
     
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form =ProductForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/prodTable')
     else:
-        form = ProductForm
+        form =ProductForm
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'products.html', {'form': form, 'submitted': submitted})
@@ -142,7 +145,7 @@ def custRep(request):
 # IDK why but when these next two methods get removed the dashboard no longer works
 @login_required
 def shop(request):
-    mydata = Products.objects.all()
+    mydata =Products.objects.all()
     template = loader.get_template('shop.html')
     context = {
         'products': mydata,
@@ -180,7 +183,7 @@ def custTable(request):
 
 @login_required
 def prodTable(request):
-    mydata = Products.objects.all()
+    mydata =Products.objects.all()
     template = loader.get_template('Items.html')
     context = {
         'products': mydata,
@@ -211,7 +214,7 @@ def deleteCust(request, id):
 
 @login_required
 def deleteProduct(request, id):
-    member = Products.objects.get(id=id)
+    member =Products.objects.get(id=id)
     member.delete()
     context = {
         'products': member,
@@ -224,7 +227,7 @@ def deleteProduct(request, id):
 #     mydata = Transactions.objects.all()
 #     template = loader.get_template('templates\Items.html')
 #     context = {
-#         'products': mydata,
+#         'productsproductss': mydata,
 #     }
 #     return HttpResponse(template.render(context, request))
 
@@ -236,3 +239,55 @@ def transactionTable(request):
         'transaction': mydata,
     }
     return HttpResponse(template.render(context, request))
+
+
+
+
+
+
+#IAN'S CODE
+#this is the cart section
+
+#Cart is not defined in pylance
+@login_required(login_url="/users/login")
+def cart_add(request, id):
+    cart = Cart(request)
+    products = products.objects.get(id=id)
+    cart.add(productsproducts=productsproducts)
+    return redirect("home")
+
+
+@login_required(login_url="/users/login")
+def item_clear(request, id):
+    cart = Cart(request)
+    products =products.objects.get(id=id)
+    cart.remove(productsproducts)
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def item_increment(request, id):
+    cart = Cart(request)
+    products =products.objects.get(id=id)
+    cart.add(productsproducts=productsproducts)
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def item_decrement(request, id):
+    cart = Cart(request)
+    products =products.objects.get(id=id)
+    cart.decrement(productsproducts=productsproducts)
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect("cart_detail")
+
+
+@login_required(login_url="/users/login")
+def cart_detail(request):
+    return render(request, 'cart/cart_detail.html')

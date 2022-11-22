@@ -30,10 +30,26 @@ urlpatterns = [
     path('deleteEmp/<int:id>/', views.deleteEmp, name='deleteEmp'),
     path('deleteProduct/<int:id>/', views.deleteProduct, name='deleteProduct'),
     
-    # path('cart/', views.cart, name='cart'),
     # path('vreg/', views.vreg, name='vreg'),
     path('shop/', views.shop, name='shop'),
     
 
     # path('pie_chart/',views.pie_chart, name="pie_chart"),
+
+
+
+    # url for the cart
+    #so let us break this down..
+    #cart/
+
+
+    path('cart/', views.cart, name='cart'), #not sure if this one will work well for me
+    path('cart/add/<int:id>/', views.cart_add, name='cart_add'),
+    path('cart/item_clear/<int:id>/', views.item_clear, name='item_clear'),
+    path('cart/item_increment/<int:id>/',views.item_increment, name='item_increment'),
+    path('cart/item_decrement/<int:id>/', views.item_decrement, name='item_decrement'),
+    path('cart/cart_clear/', views.cart_clear, name='cart_clear'),
+    path('cart/cart-detail/',views.cart_detail,name='cart_detail'),
+
+
 ]
