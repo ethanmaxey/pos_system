@@ -14,11 +14,11 @@
         <table border=1 width=1200px class="table table-inverse">
             <thead class="thead-primary">
                 <tr>
-                    <th class="table-primary">Transaction Code</th>
+                    <th class="table-primary">Transaction ID</th>
                     <th class="table-primary">Employee ID</th>
-                    <th class="table-primary">Customer ID</th>
                     <th class="table-primary">Subtotal</th>
                     <th class="table-primary">Grandtotal</th>
+                    <th class="table-primary">Date Added</th>
                     <th class="table-primary">Delete</th>
                 </tr>
             </thead>
@@ -27,9 +27,9 @@
                 <tr>
                     <td>{{pro.id}}</td>
                     <td>{{pro.empid}}</td>
-                    <td>{{pro.custid}}</td>
                     <td>{{pro.subtotal}}</td>
                     <td>{{pro.grandtotal}}</td>
+                    <td>{{pro.dateadded}}</td>
                     <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
                 </tr>
                 {%endfor%}
