@@ -37,6 +37,8 @@ urlpatterns = [
     path('updateEmp/<int:id>/empSubmit/', views.empSubmit, name='empSubmit'),
     path('updateCust/<int:id>/', views.updateCust, name='updateCust'),
     path('updateCust/<int:id>/custSubmit/', views.custSubmit, name='custSubmit'),
+    path('updateProd/<int:id>/', views.updateProd, name='updateProd'),
+    path('updateProd/<int:id>/prodSubmit/', views.prodSubmit, name='prodSubmit'),
     
     # path('vreg/', views.vreg, name='vreg'),
     path('shop/', views.shop, name='shop'),

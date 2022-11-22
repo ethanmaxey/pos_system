@@ -327,6 +327,28 @@ def custSubmit(request, id):
   return HttpResponseRedirect(reverse('custTable')) 
 
 
+@login_required
+def updateProd(request, id):
+  mymember = Products.objects.filter(id=id)
+  template = loader.get_template('update_product.html')
+  context = {
+    'up_product': mymember,
+  }
+  return HttpResponse(template.render(context, request))
+
+@login_required()
+def prodSubmit(request, id):
+  name = request.POST['name']
+  description = request.POST['description']
+  price = request.POST['price']
+  dateupdated = request.POST['dateupdated']
+  member = Products.objects.get(id=id)
+  member.name = name
+  member.description = description
+  member.price = price
+  member.dateupdated = dateupdated
+  member.save()
+  return HttpResponseRedirect(reverse('prodTable')) 
 
 #IAN'S CODE
 #this is the cart section
