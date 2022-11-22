@@ -167,7 +167,7 @@ def shop(request):
     context = {
         'products': mydata,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'shop.html', {'products':mydata})
 
 
 
