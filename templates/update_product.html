@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Update Product {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %} 
+<div class="form-body">
+
+<center> <h1>Update Product Record</h1> 
+<form action="prodSubmit/{{ up_product.id }}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+    Product Name:<br>
+    <input name="name" value="{{ up_product.name }}">
+    <br><br>
+
+    Description:<br>
+    <input name="description" value="{{ up_product.description }}">
+    <br><br>
+
+    Price:<br>
+    <input name="price" value="{{ up_product.price }}">
+    <br><br>
+
+    Amount:<br>
+    <input name="amount" value="{{ up_product.amount}}">
+    <br><br>
+
+    Date Updated:<br>
+    <input name="dateupdated" value="{{ up_product.dateupdated }}">
+    <br><br>
+
+    <input type = 'submit' value = 'Submit' class = 'btn btn-success'>
+</form>
+{% endblock %}

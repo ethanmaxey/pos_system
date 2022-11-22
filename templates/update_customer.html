@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} Add Categories to Database {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %} 
+<div class="form-body">
+
+<center> <h1>Update Employee Record</h1> 
+<form action="custSubmit/{{ up_customer.id }}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+First Name:<br>
+<input name="first_name" value="{{ up_customer.firstname }}">
+<br><br>
+Last Name:<br>
+<input name="last_name" value="{{ up_customer.lastname }}">
+<br><br>
+Email:<br>
+<input name="email" value="{{ up_customer.email }}">
+<br><br>
+Username:<br>
+<input name="username" value="{{ up_customer.username }}">
+<br><br>
+<input type = 'submit' value = 'Submit' class = 'btn btn-success'>
+</form>
+{% endblock %}

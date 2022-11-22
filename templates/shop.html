@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+  <center>
+    <strong><a class="add-btn" href="/cart"><button type="button" class="btn btn-success">Go To Cart</button></a></strong>
+  </center>
+  
+  {% comment %} <div class="container d-flex justify-content-center mt-50 mb-50">
+    <div class="row">
+      <div class="col-xs-4 mt-2">
+        {% for prod in products %} 
+        <div class="card style="width: 18rem;"">
+          <div class="card-body">
+            <div class="card-img-actions">
+              <img src="https://cdn-icons-png.flaticon.com/512/1170/1170577.png" class="card-img img-fluid" width="96" height="350" alt="" />
+            </div>
+          </div>
+          <div class="card-body bg-light text-center">
+            <div class="mb-2">
+              <h6 class="font-weight-semibold mb-2"><a href="#" class="text-default mb-2" data-abc="true"></a>{{prod.name}}</h6>
+
+              <a href="#" class="text-muted" data-abc="true">{{prod.product_name}}</a>
+            </div>
+
+            <h3 class="mb-0 font-weight-semibold">{{prod.price}}</h3>
+            
+            <div>
+              <i class="fa fa-star star">{{prod.description}}</i>
+              <i class="fa fa-star star">{{prod.price}}</i>
+              <i class="fa fa-star star"></i>
+              <i class="fa fa-star star"></i>
+            </div>
+            <button type="button" class="btn bg-cart btn-success"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
+            {% endfor %}
+          </div>
+        </div>
+      </div> {% endcomment %}
+<div class="container">
+  <div class="row">
+      {% for product in products %}
+  <div class="col-sm-4 card-space" style="width: 18rem;">
+      <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/1170/1170577.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">{{ product.description }}</p>
+    <p class="card-text">Price - {{ product.price }}</p>
+    <a href="#" class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+</div>
+</div>
+{% endfor %}
+      
+{% endblock %}

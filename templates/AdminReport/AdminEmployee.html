@@ -1,0 +1,53 @@
+{% extends 'home.html' %} 
+{% block content %} 
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Employees</title>
+</head>
+<div class = "emp-body">
+    <center>
+        <h1>Employee Info</h1>
+    </center>
+    <strong>
+        <a class = "add-btn" href ="/add_emp"> <button type="button" class="btn btn-success">Add Employee</button> </a>
+    </strong>
+    <center>
+        <table border=1 width=1200px class="table table-inverse">
+            <thead class="thead-primary">
+                <tr>
+                    <th class="table-primary">Employee ID</th>
+                    <th class="table-primary">First Name</th>
+                    <th class="table-primary">Last Name</th>
+                    <th class="table-primary">Email</th>
+                    <th class="table-primary">Username</th>
+                    <th class="table-primary">Delete</th>
+                    <th class="table-primary">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %} 
+                {% if emp.is_staff == 1 %}
+                {% if emp.is_superuser != 1 %}
+            <tbody>
+                <tr>
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.first_name}}</td>
+                    <td>{{emp.last_name}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.username}}</td>
+                    <td><a href="/deleteEmp/{{ emp.id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    <td><a href="/updateEmp/{{ emp.id }}"><button type="button" class="btn btn-danger">Update</button></a></td>
+                </tr>
+            </tbody>
+            {%endif%}
+            {%endif%}
+            {%endfor%}
+            </tbody>
+        </table>
+    </center>
+</div>
+
+
+{% endblock %}

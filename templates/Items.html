@@ -1,0 +1,46 @@
+{% extends 'home.html' %} 
+{% block content %} 
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Products</title>
+</head>
+<div class = "emp-body">
+    <center>
+        <h1>Products Table</h1>
+    </center>
+    <strong>
+        <a class = "add-btn" href ="/add_product"> <button type="button" class="btn btn-success">Add Products</button> </a>
+    </strong>
+    <center>
+        <table border=1 width=1200px class="table table-inverse">
+            <thead class="thead-primary">
+                <tr>
+                    <th class="table-primary">Product ID</th>
+                    <th class="table-primary">Product Name</th>
+                    <th class="table-primary">Price</th>
+                    <th class="table-primary">Description</th>
+                    <th class="table-primary">Amount</th>
+                    <th class="table-primary">Delete</th>
+                    <th class="table-primary">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pro in products %} 
+                <tr>
+                    <td>{{pro.id}}</td>
+                    <td>{{pro.name}}</td>
+                    <td>{{pro.price}}</td>
+                    <td>{{pro.description}}</td>
+                    <td>{{pro.amount}}</td>
+                    <td><a href="/deleteProduct/{{ pro.id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    <td><a href="/updateProd/{{ pro.id }}"><button type="button" class="btn btn-danger">Update</button></a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </center>
+</div>
+{% endblock %}

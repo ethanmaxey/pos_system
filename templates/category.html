@@ -1,0 +1,44 @@
+{% extends 'home.html' %} 
+{% block content %} 
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Products</title>
+</head>
+<div class = "emp-body">
+    <center>
+        <h1>Products Table</h1>
+    </center>
+    <strong>
+        <a class = "add-btn" href ="/add_category"> <button type="button" class="btn btn-success">Add Categories</button> </a>
+    </strong>
+    <center>
+        <table border=1 width=1200px class="table table-inverse">
+            <thead class="thead-primary">
+                <tr>
+                    <th class="table-primary">Category ID</th>
+                    <th class="table-primary">Category Name</th>
+                    <th class="table-primary">Date Added</th>
+                    <th class="table-primary">Date Updated</th>
+                    <th class="table-primary">Delete</th>
+                    <th class="table-primary">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in category %} 
+                <tr>
+                    <td>{{cat.id}}</td>
+                    <td>{{cat.name}}</td>
+                    <td>{{cat.date_added}}</td>
+                    <td>{{cat.date_updated}}</td>
+                    <td><a href="/deleteCategory/{{ cat.id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    <td><a href="/deleteCategory/{{ cat.id }}"><button type="button" class="btn btn-danger">Update</button></a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </center>
+</div>
+{% endblock %}
