@@ -279,6 +279,52 @@ def transactionTable(request):
 
 
 
+@login_required
+def updateEmp(request, id):
+  mymember = AuthUser.objects.filter(id=id)
+  template = loader.get_template('update_employee.html')
+  context = {
+    'up_employee': mymember,
+  }
+  return HttpResponse(template.render(context, request))
+
+@login_required()
+def empSubmit(request, id):
+  first = request.POST['first_name']
+  last = request.POST['last_name']
+  mail = request.POST['email']
+  user = request.POST['username']
+  member = AuthUser.objects.get(id=id)
+  member.first_name = first
+  member.last_name = last
+  member.email = mail
+  member.username = user
+  member.save()
+  return HttpResponseRedirect(reverse('empTable')) 
+
+
+@login_required
+def updateCust(request, id):
+  mymember = AuthUser.objects.filter(id=id)
+  template = loader.get_template('update_customer.html')
+  context = {
+    'up_customer': mymember,
+  }
+  return HttpResponse(template.render(context, request))
+
+@login_required()
+def custSubmit(request, id):
+  first = request.POST['first_name']
+  last = request.POST['last_name']
+  mail = request.POST['email']
+  user = request.POST['username']
+  member = AuthUser.objects.get(id=id)
+  member.first_name = first
+  member.last_name = last
+  member.email = mail
+  member.username = user
+  member.save()
+  return HttpResponseRedirect(reverse('custTable')) 
 
 
 

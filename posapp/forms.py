@@ -104,3 +104,4 @@ class CategoryForm(ModelForm):
             'date_added': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
             'date_updated': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
          }
+

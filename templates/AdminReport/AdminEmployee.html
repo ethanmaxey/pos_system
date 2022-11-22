@@ -22,7 +22,8 @@
                     <th class="table-primary">Last Name</th>
                     <th class="table-primary">Email</th>
                     <th class="table-primary">Username</th>
-                    <th class="table-primary">Action</th>
+                    <th class="table-primary">Delete</th>
+                    <th class="table-primary">Update</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                     <td>{{emp.email}}</td>
                     <td>{{emp.username}}</td>
                     <td><a href="/deleteEmp/{{ emp.id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    <td><a href="/updateEmp/{{ emp.id }}"><button type="button" class="btn btn-danger">Update</button></a></td>
                 </tr>
             </tbody>
             {%endif%}

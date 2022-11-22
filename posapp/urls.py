@@ -31,6 +31,12 @@ urlpatterns = [
     path('deleteEmp/<int:id>/', views.deleteEmp, name='deleteEmp'),
     path('deleteProduct/<int:id>/', views.deleteProduct, name='deleteProduct'),
     path('deleteCategory/<int:id>/', views.deleteCategory, name='deleteCategory'),
+
+    ## Updating Things
+    path('updateEmp/<int:id>/', views.updateEmp, name='updateEmp'),
+    path('updateEmp/<int:id>/empSubmit/', views.empSubmit, name='empSubmit'),
+    path('updateCust/<int:id>/', views.updateCust, name='updateCust'),
+    path('updateCust/<int:id>/custSubmit/', views.custSubmit, name='custSubmit'),
     
     # path('vreg/', views.vreg, name='vreg'),
     path('shop/', views.shop, name='shop'),
