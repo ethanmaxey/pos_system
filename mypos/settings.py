@@ -98,7 +98,7 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'point_of_sale',
+        'NAME': 'pos_testdb',
         'USER': 'username',
         'PASSWORD': 'Password#1',
         'HOST': 'pos-mysql-server.mysql.database.azure.com',

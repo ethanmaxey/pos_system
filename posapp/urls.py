@@ -10,6 +10,7 @@ urlpatterns = [
     path('add_emp/', views.add_emp, name='add_emp'),
     path('add_cust/', views.add_customer, name='add_cust'),
     path('add_product/', views.add_product, name="add_product"),
+    path('add_category/', views.add_category, name="add_category"),
     
     # path('adminVend/', views.adminVend, name="adminVend"),
     # path('empTrans/', views.empTrans, name="empTrans"),
@@ -23,7 +24,7 @@ urlpatterns = [
     # path('productTable/', views.productTable, name="productTable"),
     path('prodTable/', views.prodTable, name='prodTable'),
     path('transactionTable/', views.transactionTable, name='transactionTable'),
-    
+    path('catTable/', views.catTable, name='catTable'),
     
     # # Deleting Things
     path('deleteCust/<int:id>/', views.deleteCust, name='delete'),

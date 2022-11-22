@@ -46,21 +46,8 @@ from django.contrib.auth.models import User
 
 ##############################################################
 
-## point_of_sale tables
-
-
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
-from django.db import models
-
-
 class AuthGroup(models.Model):
-    name = models.CharField(unique=True, max_length=150)
+    name = models.CharField(unique=True, max_length=80)
 
     class Meta:
         managed = False
@@ -69,24 +56,22 @@ class AuthGroup(models.Model):
 
 class AuthGroupPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+    group_id = models.IntegerField()
+    permission_id = models.IntegerField()
 
     class Meta:
         managed = False
         db_table = 'auth_group_permissions'
-        unique_together = (('group', 'permission'),)
 
 
 class AuthPermission(models.Model):
-    name = models.CharField(max_length=255)
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    name = models.CharField(max_length=50)
+    content_type_id = models.IntegerField()
     codename = models.CharField(max_length=100)
 
     class Meta:
         managed = False
         db_table = 'auth_permission'
-        unique_together = (('content_type', 'codename'),)
 
 
 class AuthUser(models.Model):
@@ -106,28 +91,6 @@ class AuthUser(models.Model):
         db_table = 'auth_user'
 
 
-class AuthUserGroups(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_groups'
-        unique_together = (('user', 'group'),)
-
-
-class AuthUserUserPermissions(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'auth_user_user_permissions'
-        unique_together = (('user', 'permission'),)
-
-
 class Category(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.TextField()
@@ -141,31 +104,8 @@ class Category(models.Model):
         db_table = 'category'
 
 
-class Customer(models.Model):
-    name = models.CharField(max_length=45)
-    email = models.CharField(unique=True, max_length=79)
-    dob = models.TextField()
-
-    class Meta:
-        managed = False
-        db_table = 'customer'
-
-
-class DjangoAdminLog(models.Model):
-    action_time = models.DateTimeField()
-    object_id = models.TextField(blank=True, null=True)
-    object_repr = models.CharField(max_length=200)
-    action_flag = models.PositiveSmallIntegerField()
-    change_message = models.TextField()
-    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
-    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'django_admin_log'
-
-
 class DjangoContentType(models.Model):
+    name = models.CharField(max_length=100)
     app_label = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
 
@@ -186,40 +126,19 @@ class DjangoMigrations(models.Model):
         db_table = 'django_migrations'
 
 
-class DjangoSession(models.Model):
-    session_key = models.CharField(primary_key=True, max_length=40)
-    session_data = models.TextField()
-    expire_date = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'django_session'
-
-
 class Products(models.Model):
     id = models.BigAutoField(primary_key=True)
-    code = models.CharField(max_length=100)
     name = models.TextField()
     description = models.TextField()
     price = models.FloatField()
-    status = models.IntegerField()
     date_added = models.DateTimeField()
     date_updated = models.DateTimeField()
-
-
-class Employee(models.Model):
-    emp_id = models.PositiveIntegerField(primary_key=True)
-    emp_name = models.CharField(max_length=50)
-    emp_pay_rate = models.CharField(max_length=6)
-    emp_weekly_hours = models.DecimalField(max_digits=3, decimal_places=1)
-    emp_start_date = models.DateField()
-    emp_dob = models.DateField()
-    emp_email = models.CharField(max_length=254)
-    emp_age = models.IntegerField()
+    category_id = models.ForeignKey(Category, models.DO_NOTHING)
+    amount = models.IntegerField()
 
     class Meta:
         managed = False
-        db_table = 'employee'
+        db_table = 'products'
 
 
 class Transactions(models.Model):
@@ -229,8 +148,31 @@ class Transactions(models.Model):
     tax = models.CharField(max_length=45)
     dateadded = models.CharField(max_length=45)
     empid = models.IntegerField()
-    cusid = models.ForeignKey('AuthUser', models.DO_NOTHING, db_column='cusid')
+    cusid = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='cusid')
+    category = models.ForeignKey(Category, models.DO_NOTHING)
 
     class Meta:
         managed = False
         db_table = 'transactions'
+
+
+class Vendor(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    name = models.TextField()
+    status = models.IntegerField()
+    address = models.TextField(blank=True, null=True)
+    category_id = models.BigIntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'vendor'
+
+
+class VendorCategory(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    vendorid = models.ForeignKey(Vendor, models.DO_NOTHING, db_column='vendorid')
+    categoryid = models.ForeignKey(Category, models.DO_NOTHING, db_column='categoryid')
+
+    class Meta:
+        managed = False
+        db_table = 'vendor_category'

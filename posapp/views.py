@@ -6,13 +6,13 @@ from django.shortcuts import render, redirect
 from .forms import CustomerForm, RegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import EmployeeForm,ProductForm
+from .forms import EmployeeForm,ProductForm, CategoryForm
 import random
-from .models import Customer, Employee,Products, AuthUser, Transactions
+from .models import Products, AuthUser, Transactions, Category
 from django.template import loader
 from django.urls import reverse
 
-from cart.cart import Cart
+# from cart.cart import Cart
 
 #from posapp.models import Employee
 
@@ -120,6 +120,23 @@ def add_product(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'products.html', {'form': form, 'submitted': submitted})
+
+
+@login_required
+def add_category(request):
+    form =CategoryForm()
+    submitted = False
+    
+    if request.method == 'POST':
+        form =CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/catTable')
+    else:
+        form =CategoryForm
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'categoryadd.html', {'form': form, 'submitted': submitted})
     
 
 @login_required
@@ -187,6 +204,16 @@ def prodTable(request):
     template = loader.get_template('Items.html')
     context = {
         'products': mydata,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+@login_required
+def catTable(request):
+    mydata = Category.objects.all()
+    template = loader.get_template('category.html')
+    context = {
+        'category': mydata,
     }
     return HttpResponse(template.render(context, request))
 

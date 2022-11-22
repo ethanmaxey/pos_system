@@ -34,7 +34,7 @@
           </li>
         
         {% endif %}
-        {% if user.is_superuser %}
+        {% if user.is_superuser == 1 %}
           <li class="nav-item">
             <a class="nav-link" href="/custTable">
               <span data-feather="file" class="align-text-bottom"></span>
@@ -57,6 +57,12 @@
             <a class="nav-link" aria-current="page" href="/transactionTable">
               <span data-feather="home" class="align-text-bottom"></span>
               Transactions
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/catTable">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Categories
             </a>
           </li>
         {% endif %}

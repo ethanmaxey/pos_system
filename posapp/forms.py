@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import Customer, Products
+from .models import Products
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required = True)
@@ -85,3 +85,24 @@ class EmployeeForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2','is_staff']
 
+
+
+class CategoryForm(ModelForm):
+    class Meta:
+        model = Products
+        fields = '__all__'
+        labels = {
+            'id': '',
+            'name': '',
+            'description': '',
+            'status': '',
+            'dateadded': '',
+         }
+
+        widgets = {
+            'id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product ID: 0000-9999'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'}),
+            'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Price: 00.00 - 1000.00'}),
+            'status': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category'}),
+            'dateadded': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
+         }
