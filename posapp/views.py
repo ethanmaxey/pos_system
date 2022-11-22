@@ -249,6 +249,16 @@ def deleteProduct(request, id):
     return HttpResponseRedirect(reverse('prodTable'))
 
 
+@login_required
+def deleteCategory(request, id):
+    member =Category.objects.get(id=id)
+    member.delete()
+    context = {
+        'category': member,
+    }
+    return HttpResponseRedirect(reverse('catTable'))
+
+
 # @login_required
 # def transactionTable(request):
 #     mydata = Transactions.objects.all()

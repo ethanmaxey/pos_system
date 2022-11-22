@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import Products
+from .models import Products, Category
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required = True)
@@ -89,20 +89,18 @@ class EmployeeForm(UserCreationForm):
 
 class CategoryForm(ModelForm):
     class Meta:
-        model = Products
-        fields = '__all__'
+        model = Category
+        fields = 'name', 'description', 'date_added', 'date_updated'
         labels = {
-            'id': '',
             'name': '',
             'description': '',
-            'status': '',
-            'dateadded': '',
+            'date_added': '',
+            'date_updated': '',
          }
 
         widgets = {
-            'id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product ID: 0000-9999'}),
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'}),
-            'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Price: 00.00 - 1000.00'}),
-            'status': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category'}),
-            'dateadded': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category Name'}),
+            'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Description'}),
+            'date_added': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
+            'date_updated': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
          }

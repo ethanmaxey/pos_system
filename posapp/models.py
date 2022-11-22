@@ -95,7 +95,6 @@ class Category(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.TextField()
     description = models.TextField()
-    status = models.IntegerField()
     date_added = models.DateTimeField()
     date_updated = models.DateTimeField()
 

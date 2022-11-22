@@ -30,6 +30,7 @@ urlpatterns = [
     path('deleteCust/<int:id>/', views.deleteCust, name='delete'),
     path('deleteEmp/<int:id>/', views.deleteEmp, name='deleteEmp'),
     path('deleteProduct/<int:id>/', views.deleteProduct, name='deleteProduct'),
+    path('deleteCategory/<int:id>/', views.deleteCategory, name='deleteCategory'),
     
     # path('vreg/', views.vreg, name='vreg'),
     path('shop/', views.shop, name='shop'),
