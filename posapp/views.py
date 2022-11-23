@@ -277,11 +277,9 @@ def transactionTable(request):
     }
     return HttpResponse(template.render(context, request))
 
-
-
 @login_required
 def updateEmp(request, id):
-  mymember = AuthUser.objects.filter(id=id)
+  mymember = AuthUser.objects.get(id=id)
   template = loader.get_template('update_employee.html')
   context = {
     'up_employee': mymember,
