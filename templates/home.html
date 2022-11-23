@@ -103,7 +103,36 @@
         <h1>Welcome to your account, {{user.username}}!</h1>
     </center>
     <center>
+<<<<<<< HEAD
         <h3>Employee Data Here</h3>
+=======
+      <div id="container" style="width: 40%;" class="col-xs-6">
+        <h3>Sales Made</h3>
+        <canvas id="hour-chart"></canvas>
+        <script>
+          var config = {
+            type: 'doughnut',
+            data: {
+              datasets: [{
+                data: {{data1 | safe}},
+                backgroundColor: [
+                '#2085ec', '#72b4eb', '#0a417a', '#73ffff', '#5c26ff', '#002db3', '#ffff26', '#4cff4c', '#ff00ff'
+                ],
+                label: 'Hours'
+              }],
+              labels: {{ labels1|safe }}
+            },
+            options: {
+              responsive: true
+            }
+          };
+          window.onload = function() {
+            var ctx = document.getElementById('hour-chart').getContext('2d');
+            window.myPie = new Chart(ctx, config);
+          };
+        </script>
+      </div>
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
     </center>
     {%else%}
         <div class="main-body">

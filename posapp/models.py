@@ -95,8 +95,13 @@ class Category(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.TextField()
     description = models.TextField()
+<<<<<<< HEAD
     date_added = models.DateTimeField()
     date_updated = models.DateTimeField()
+=======
+    date_added = models.DateField()
+    date_updated = models.DateField()
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 
     class Meta:
         managed = False
@@ -118,7 +123,11 @@ class DjangoMigrations(models.Model):
     id = models.BigAutoField(primary_key=True)
     app = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
+<<<<<<< HEAD
     applied = models.DateTimeField()
+=======
+    applied = models.DateField()
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 
     class Meta:
         managed = False
@@ -130,8 +139,13 @@ class Products(models.Model):
     name = models.TextField()
     description = models.TextField()
     price = models.FloatField()
+<<<<<<< HEAD
     date_added = models.DateTimeField()
     date_updated = models.DateTimeField()
+=======
+    date_added = models.DateField()
+    date_updated = models.DateField()
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
     category_id = models.ForeignKey(Category, models.DO_NOTHING)
     amount = models.IntegerField()
 
@@ -147,7 +161,10 @@ class Transactions(models.Model):
     tax = models.CharField(max_length=45)
     dateadded = models.CharField(max_length=45)
     empid = models.IntegerField()
+<<<<<<< HEAD
     cusid = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='cusid')
+=======
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
     category = models.ForeignKey(Category, models.DO_NOTHING)
 
     class Meta:
@@ -158,7 +175,10 @@ class Transactions(models.Model):
 class Vendor(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.TextField()
+<<<<<<< HEAD
     status = models.IntegerField()
+=======
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
     address = models.TextField(blank=True, null=True)
     category_id = models.BigIntegerField()
 

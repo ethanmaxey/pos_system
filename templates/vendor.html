@@ -1,0 +1,47 @@
+{% extends 'home.html' %} 
+{% block content %} 
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Vendors</title>
+</head>
+<div class = "emp-body">
+    <center>
+        <h1>Vendors Info</h1>
+    </center>
+    <strong>
+        <a class = "add-btn" href ="/add_vendors"> <button type="button" class="btn btn-success">Add Vendor</button> </a>
+    </strong>
+    <center>
+        <table border=1 width=1200px class="table table-inverse">
+            <thead class="thead-primary">
+                <tr>
+                    <th class="table-primary">Vendor ID</th>
+                    <th class="table-primary">Vendor Name</th>
+                    <th class="table-primary">Address</th>
+                    <th class="table-primary">Category</th>
+                    <th class="table-primary">Delete</th>
+                    <th class="table-primary">Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vend in vendors %} 
+            <tbody>
+                <tr>
+                    <td>{{vend.id}}</td>
+                    <td>{{vend.name}}</td>
+                    <td>{{vend.address}}</td>
+                    <td>{{vend.category_id}}</td>
+                    <td><a href="/deleteVendor/{{ vend.id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    <td><a href="/updateVendor/{{ vend.id }}"><button type="button" class="btn btn-danger">Update</button></a></td>
+                </tr>
+            </tbody>
+            {%endfor%}
+            </tbody>
+        </table>
+    </center>
+</div>
+
+
+{% endblock %}

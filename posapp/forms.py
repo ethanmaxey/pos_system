@@ -3,7 +3,15 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 from django.forms import ModelForm
+<<<<<<< HEAD
 from .models import Products, Category
+=======
+from .models import Products, Category, Vendor
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(required = True)
@@ -101,7 +109,30 @@ class CategoryForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category Name'}),
             'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Description'}),
+<<<<<<< HEAD
             'date_added': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
             'date_updated': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
+=======
+            'date_added': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
+            'date_updated': forms.DateInput(format='%m/%d/%Y'),
+         }
+
+
+
+class VendorForm(ModelForm):
+    class Meta:
+        model = Vendor
+        fields =  'name', 'address', 'category_id'
+        labels = {
+            'name': '',
+            'address': '',
+            'category_id': '',
+         }
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Vendor Name'}),
+            'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'}),
+            'category_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category ID'}),
+>>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
          }
 

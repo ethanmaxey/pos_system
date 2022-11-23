@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Update Product {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %} 
+<div class="form-body">
+
+<center> <h1>Update Vendor Record</h1> 
+<form action="vendSubmit/{{ up_product.id }}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+Vendor Name:<br>
+<input name="name" value="{{ up_product.name }}">
+<br><br>
+Address:<br>
+<input name="address" value="{{ up_product.description }}">
+<br><br>
+Category ID:<br>
+<input name="category_id" value="{{ up_product.price }}">
+<br><br>
+<input type = 'submit' value = 'Submit' class = 'btn btn-success'>
+</form>
+{% endblock %}
