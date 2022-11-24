@@ -324,15 +324,22 @@ def transactionTable(request):
     return HttpResponse(template.render(context, request))
 
 
-
 @login_required
 def updateEmp(request, id):
-  mymember = AuthUser.objects.filter(id=id)
-  template = loader.get_template('update_employee.html')
-  context = {
-    'up_employee': mymember,
-  }
-  return HttpResponse(template.render(context, request))
+
+    employee = AuthUser.objects.get(id=id)
+    # employee.username
+    # employee.email
+    # employee.first_name
+    # employee.last_name
+    # employee.password
+    # employee.is_staff
+
+    template = loader.get_template('update_employee.html')
+    context = {
+        'up_employee': employee,
+    }
+    return HttpResponse(template.render(context, request))
 
 @login_required()
 def empSubmit(request, id):
@@ -351,7 +358,7 @@ def empSubmit(request, id):
 
 @login_required
 def updateCust(request, id):
-  mymember = AuthUser.objects.filter(id=id)
+  mymember = AuthUser.objects.get(id=id)
   template = loader.get_template('update_customer.html')
   context = {
     'up_customer': mymember,
@@ -375,7 +382,7 @@ def custSubmit(request, id):
 
 @login_required
 def updateProd(request, id):
-  mymember = Products.objects.filter(id=id)
+  mymember = Products.objects.get(id=id)
   template = loader.get_template('update_product.html')
   context = {
     'up_product': mymember,
@@ -403,12 +410,15 @@ def prodSubmit(request, id):
 
 @login_required
 def updateVendor(request, id):
-  mymember = Vendor.objects.filter(id=id)
-  template = loader.get_template('update_vendor.html')
-  context = {
-    'up_vendor': mymember,
-  }
-  return HttpResponse(template.render(context, request))
+    vendor = Vendor.objects.get(id=id)
+    # vendor.id
+    # vendor.category_id
+    
+    template = loader.get_template('update_vendor.html')
+    context = {
+        'up_vendor': vendor,
+    }
+    return HttpResponse(template.render(context, request))
 
 @login_required()
 def vendSubmit(request, id):
@@ -420,7 +430,9 @@ def vendSubmit(request, id):
   member.address = address
   member.category_id = category_id
   member.save()
-  return HttpResponseRedirect(reverse('vendTable')) 
+  return HttpResponseRedirect(reverse('vendTable'))
+
+
 
 #IAN'S CODE
 #this is the cart section
