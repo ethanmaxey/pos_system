@@ -54,6 +54,17 @@ def home(request):
         'data1': data1,
     })
 
+@login_required
+def one(request):
+    return render(request, 'one.html')
+
+@login_required
+def two(request):
+    return render(request, 'two.html')
+
+@login_required
+def three(request):
+    return render(request, 'three.html')
 
 @login_required
 def EmpHome(request):
@@ -417,6 +428,12 @@ def updateCategory(request, id):
     'up_category': mymember,
   }
   return HttpResponse(template.render(context, request))
+
+def buyProd(id):
+    product = Products.objects.get(id=id)
+    product.amount = product.amount - 1
+    product.save()
+
 
 #IAN'S CODE
 #this is the cart section
