@@ -8,18 +8,39 @@
 <form action="empSubmit/{{ up_employee.id }}" method="post">
 {% csrf_token %}
 {{form.as_p}}
-First Name:<br>
-<input name="first_name" value="{{ up_employee.firstname }}">
+
+{% comment %} value="{{ up_employee.username }} should load default values but is not loading {% endcomment %}
+Username:
+<br>
+<input name="username" value="{{ up_employee.username }}">
 <br><br>
-Last Name:<br>
-<input name="last_name" value="{{ up_employee.lastname }}">
-<br><br>
+
 Email:<br>
 <input name="email" value="{{ up_employee.email }}">
 <br><br>
-Username:<br>
-<input name="username" value="{{ up_employee.username }}">
+
+First Name:
+<br>
+<input name="first_name" value="{{ up_employee.first_name }}">
 <br><br>
+
+Last Name:
+<br>
+<input name="last_name" value="{{ up_employee.last_name }}">
+<br><br>
+
+
+{% comment %} Password info is dummy value, not valid {% endcomment %}
+{% comment %} Password:
+<br>
+<input name="password" value="{{ up_employee.password }}">
+<br><br> {% endcomment %}
+
+Is Staff:
+<br>
+<input name="is_staff" value="{{ up_employee.is_staff }}">
+<br><br>
+
 <input type = 'submit' value = 'Submit' class = 'btn btn-success'>
 </form>
 {% endblock %}
