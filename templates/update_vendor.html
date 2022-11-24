@@ -5,18 +5,27 @@
 <div class="form-body">
 
 <center> <h1>Update Vendor Record</h1> 
-<form action="vendSubmit/{{ up_product.id }}" method="post">
+<form action="vendSubmit/{{ up_vendor.id }}" method="post">
 {% csrf_token %}
 {{form.as_p}}
+
 Vendor Name:<br>
-<input name="name" value="{{ up_product.name }}">
+<input name="name" value="{{ up_vendor.name }}">
 <br><br>
+
+Vendor ID:<br>
+<input name="id" value="{{ up_vendor.id }}">
+<br><br>
+
 Address:<br>
-<input name="address" value="{{ up_product.description }}">
+<input name="address" value="{{ up_vendor.address }}">
 <br><br>
-Category ID:<br>
-<input name="category_id" value="{{ up_product.price }}">
-<br><br>
+
+{% comment %} For some reason category ID doesnt load here {% endcomment %}
+{% comment %} Category ID:<br>
+<input name="category_id" value="{{ up_vendor.category_id }}">
+<br><br> {% endcomment %}
+
 <input type = 'submit' value = 'Submit' class = 'btn btn-success'>
 </form>
 {% endblock %}
