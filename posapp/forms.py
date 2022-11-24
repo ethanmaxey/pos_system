@@ -59,7 +59,7 @@ class EmployeeForm(UserCreationForm):
     email = forms.EmailField(required = True)
     first_name = forms.CharField(required = True)
     last_name = forms.CharField(required = True)
-    is_staff = forms.IntegerField(required=True)
+    is_staff = forms.BooleanField(required=True)
 
     class Meta:
         model = User
@@ -70,19 +70,19 @@ class EmployeeForm(UserCreationForm):
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
-        fields = 'name', 'description', 'date_added', 'date_updated'
+        fields = 'name', 'description', 'date_added'#, 'date_updated'
         labels = {
             'name': '',
             'description': '',
             'date_added': '',
-            'date_updated': '',
+            # 'date_updated': '',
          }
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category Name'}),
             'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Description'}),
-            'date_added': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
-            'date_updated': forms.DateInput(format='%m/%d/%Y'),
+            'date_added': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'})
+            # 'date_updated': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'})
          }
 
 
