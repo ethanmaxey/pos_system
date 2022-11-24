@@ -48,6 +48,8 @@ urlpatterns = [
     path('updateVendor/<int:id>/', views.updateVendor, name='updateVendor'),
     path('updateVendor/<int:id>/vendSubmit/', views.vendSubmit, name='vendSubmit'),
     
+    path('updateCategory/<int:id>', views.updateCategory, name='updateCategory'),
+    
     # path('vreg/', views.vreg, name='vreg'),
     path('shop/', views.shop, name='shop'),
     
