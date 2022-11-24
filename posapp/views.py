@@ -6,15 +6,9 @@ from django.shortcuts import render, redirect
 from .forms import CustomerForm, RegisterForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-<<<<<<< HEAD
-from .forms import EmployeeForm,ProductForm, CategoryForm
-import random
-from .models import Products, AuthUser, Transactions, Category
-=======
 from .forms import EmployeeForm,ProductForm, CategoryForm, VendorForm
 import random
 from .models import Products, AuthUser, Transactions, Category, Vendor
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 from django.template import loader
 from django.urls import reverse
 
@@ -40,25 +34,14 @@ def home(request):
     data = []
     labels2 = []
     data2 = []
-<<<<<<< HEAD
-=======
     labels1 = []
     data1 = []
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 
     queryset =Products.objects.order_by('-price')[:5]
     for prod in queryset:
         labels.append(prod.name)
         data.append(prod.price)
 
-<<<<<<< HEAD
-    queryset2 = AuthUser.objects.order_by('-is_active')[:5]
-    for emp in queryset2:
-        if emp.is_staff == 1:
-            labels2.append(emp.first_name)
-            a = emp.is_active * random.randint(1, 10) * 1000
-            data2.append(a) 
-=======
     # queryset1 =Transactions.objects.order_by('-grandtotal')[:5]
     # for prod in queryset1:
     #     if user.id == queryset1.id:
@@ -72,18 +55,14 @@ def home(request):
                 labels2.append(emp.first_name)
                 a = emp.is_active * random.randint(1, 10) * 1000
                 data2.append(a) 
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 
     return render(request, 'home.html', {
         'labels': labels,
         'data': data,
         'labels2': labels2,
         'data2': data2,
-<<<<<<< HEAD
-=======
         'labels1': labels1,
         'data1': data1,
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
     })
 
 
@@ -169,8 +148,6 @@ def add_category(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'categoryadd.html', {'form': form, 'submitted': submitted})
-<<<<<<< HEAD
-=======
 
 
 @login_required
@@ -188,7 +165,6 @@ def add_vendors(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'vendorAdd.html', {'form': form, 'submitted': submitted})
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
     
 
 @login_required
@@ -269,8 +245,6 @@ def catTable(request):
     }
     return HttpResponse(template.render(context, request))
 
-<<<<<<< HEAD
-=======
 @login_required
 def vendTable(request):
     mydata =Vendor.objects.all()
@@ -279,7 +253,6 @@ def vendTable(request):
         'vendors': mydata,
     }
     return HttpResponse(template.render(context, request))
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 
 #   This is delete customer
 @login_required
@@ -322,8 +295,6 @@ def deleteCategory(request, id):
     return HttpResponseRedirect(reverse('catTable'))
 
 
-<<<<<<< HEAD
-=======
 
 @login_required
 def deleteVendor(request, id):
@@ -334,7 +305,6 @@ def deleteVendor(request, id):
     }
     return HttpResponseRedirect(reverse('vendTable'))
 
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 # @login_required
 # def transactionTable(request):
 #     mydata = Transactions.objects.all()
@@ -353,17 +323,11 @@ def transactionTable(request):
     }
     return HttpResponse(template.render(context, request))
 
-<<<<<<< HEAD
-@login_required
-def updateEmp(request, id):
-  mymember = AuthUser.objects.get(id=id)
-=======
 
 
 @login_required
 def updateEmp(request, id):
   mymember = AuthUser.objects.filter(id=id)
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
   template = loader.get_template('update_employee.html')
   context = {
     'up_employee': mymember,
@@ -436,8 +400,6 @@ def prodSubmit(request, id):
   member.save()
   return HttpResponseRedirect(reverse('prodTable')) 
 
-<<<<<<< HEAD
-=======
 
 @login_required
 def updateVendor(request, id):
@@ -460,7 +422,6 @@ def vendSubmit(request, id):
   member.save()
   return HttpResponseRedirect(reverse('vendTable')) 
 
->>>>>>> 8231de863b239fb7f8c537fa75e0135992921ac6
 #IAN'S CODE
 #this is the cart section
 
