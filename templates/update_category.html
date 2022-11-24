@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %} 
+<div class="form-body">
+
+<center> <h1>Update Category Record</h1> 
+<form action="categoriesSubmit/{{ up_category.id }}" method="post">
+{% csrf_token %}
+{{form.as_p}}
+
+Category ID:<br>
+<input name="id" value="{{ up_category.id}}">
+<br><br>
+
+Category Name:<br>
+<input name="name" value="{{ up_category.name }}">
+<br><br>
+
+Date Updated:<br>
+<input name="date_updated" value="{% now "m/d/Y" %}">
+<br><br>
+
+<input type = 'submit' value = 'Submit' class = 'btn btn-success'>
+</form>
+{% endblock %}

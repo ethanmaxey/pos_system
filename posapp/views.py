@@ -409,7 +409,14 @@ def vendSubmit(request, id):
   member.save()
   return HttpResponseRedirect(reverse('vendTable'))
 
-
+@login_required
+def updateCategory(request, id):
+  mymember = Category.objects.get(id=id)
+  template = loader.get_template('update_category.html')
+  context = {
+    'up_category': mymember,
+  }
+  return HttpResponse(template.render(context, request))
 
 #IAN'S CODE
 #this is the cart section
