@@ -11,21 +11,10 @@ import random
 from .models import Products, AuthUser, Transactions, Category, Vendor
 from django.template import loader
 from django.urls import reverse
-
+from django.contrib import messages
 # from cart.cart import Cart
 
-#from posapp.models import Employee
-
-# from POS.models import Departments, Employees
-# from POS.serializers import DepartmentSerializer, EmployeeSerializer
-
 # Create your views here.
-
-# Renders html code
-# def index(request):
-#     return render(request, 'base.html')
-
-# Tylers part below
 
 @login_required(login_url='/login')
 def home(request):
@@ -228,7 +217,7 @@ def custTable(request):
 
 @login_required
 def prodTable(request):
-    mydata =Products.objects.all()
+    mydata = Products.objects.all()
     template = loader.get_template('Items.html')
     context = {
         'products': mydata,
@@ -253,14 +242,6 @@ def vendTable(request):
         'vendors': mydata,
     }
     return HttpResponse(template.render(context, request))
-
-#   This is delete customer
-@login_required
-def delete(request, id):
-    # Changed .get to .filter in order to remove the three john cena's
-    member = Customer.objects.filter(cust_id=id)
-    member.delete()
-    return HttpResponseRedirect(reverse('custTable'))
 
 @login_required
 def deleteEmp(request, id):
@@ -328,13 +309,6 @@ def transactionTable(request):
 def updateEmp(request, id):
 
     employee = AuthUser.objects.get(id=id)
-    # employee.username
-    # employee.email
-    # employee.first_name
-    # employee.last_name
-    # employee.password
-    # employee.is_staff
-
     template = loader.get_template('update_employee.html')
     context = {
         'up_employee': employee,
@@ -387,6 +361,9 @@ def updateProd(request, id):
   context = {
     'up_product': mymember,
   }
+  if mymember.amount < 50:
+      messages.info(request, 'Low on product, please order more!')
+  
   return HttpResponse(template.render(context, request))
 
 @login_required()
