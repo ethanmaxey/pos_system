@@ -412,13 +412,13 @@ def updateVendor(request, id):
 def vendSubmit(request, id):
   name = request.POST['name']
   address = request.POST['address']
-  category_id = request.POST['category_id']
+#   category_id = request.POST['category_id']
   need_order = request.POST['need_order']
   member = Vendor.objects.get(id=id)
   member.need_order = need_order
   member.name = name
   member.address = address
-  member.category_id = category_id
+#   member.category_id = category_id
   member.save()
   return HttpResponseRedirect(reverse('vendTable'))
 
