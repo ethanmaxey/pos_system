@@ -402,6 +402,7 @@ def updateVendor(request, id):
     vendor = Vendor.objects.get(id=id)
     # vendor.id
     # vendor.category_id
+    # vendor.need_order
     
     template = loader.get_template('update_vendor.html')
     context = {
