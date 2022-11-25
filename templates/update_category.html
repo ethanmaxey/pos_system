@@ -4,7 +4,7 @@
 <div class="form-body">
 
 <center> <h1>Update Category Record</h1> 
-<form action="categoriesSubmit/{{ up_category.id }}" method="post">
+<form action="/categorySubmit/{{ up_category.id }}" method="post">
 {% csrf_token %}
 {{form.as_p}}
 
@@ -17,7 +17,7 @@ Category Name:<br>
 <br><br>
 
 Date Updated:<br>
-<input name="date_updated" value="{% now "m/d/Y" %}">
+<input name="date_updated" value="{% now "Y-m-d" %}">
 <br><br>
 
 <input type = 'submit' value = 'Submit' class = 'btn btn-success'>

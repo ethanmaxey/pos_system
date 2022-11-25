@@ -37,18 +37,19 @@ urlpatterns = [
 
     ## Updating Things
     path('updateEmp/<int:id>/', views.updateEmp, name='updateEmp'),
-    path('empSubmit/<int:id>/', views.empSubmit, name='empSubmit'),
+    path('empSubmit/<int:id>', views.empSubmit, name='empSubmit'),
     
     path('updateCust/<int:id>/', views.updateCust, name='updateCust'),
-    path('updateCust/<int:id>/custSubmit/', views.custSubmit, name='custSubmit'),
+    path('custSubmit/<int:id>', views.custSubmit, name='custSubmit'),
     
     path('updateProd/<int:id>/', views.updateProd, name='updateProd'),
-    path('updateProd/<int:id>/prodSubmit/', views.prodSubmit, name='prodSubmit'),
+    path('prodSubmit/<int:id>', views.prodSubmit, name='prodSubmit'),
     
     path('updateVendor/<int:id>/', views.updateVendor, name='updateVendor'),
-    path('updateVendor/<int:id>/vendSubmit/', views.vendSubmit, name='vendSubmit'),
+    path('vendSubmit/<int:id>', views.vendSubmit, name='vendSubmit'),
     
     path('updateCategory/<int:id>', views.updateCategory, name='updateCategory'),
+    path('categorySubmit/<int:id>', views.categorySubmit, name='categorySubmit'),
     
     # path('vreg/', views.vreg, name='vreg'),
     path('buyProd/<int:id>', views.buyProd, name='buyProd'),

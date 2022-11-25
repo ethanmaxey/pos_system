@@ -5,7 +5,7 @@
 <div class="form-body">
 
 <center> <h1>Update Vendor Record</h1> 
-<form action="vendSubmit/{{ up_vendor.id }}" method="post">
+<form action="/vendSubmit/{{ up_vendor.id }}" method="post">
 {% csrf_token %}
 {{form.as_p}}
 
