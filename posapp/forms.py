@@ -90,16 +90,20 @@ class CategoryForm(ModelForm):
 class VendorForm(ModelForm):
     class Meta:
         model = Vendor
-        fields =  'name', 'address', 'category_id'
+        fields =  'id', 'name', 'address', 'category_id'#, 'needorder'
         labels = {
+            'id': '',
             'name': '',
             'address': '',
             'category_id': '',
+            # 'needorder': ''
          }
 
         widgets = {
+            'id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Vendor ID'}),
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Vendor Name'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'}),
             'category_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category ID'}),
+            # 'needorder': forms.CheckboxInput(attrs={'class': 'form-control', 'placeholder': 'Need Order?: Yes/No'})
          }
 
