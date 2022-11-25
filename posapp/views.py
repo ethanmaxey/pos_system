@@ -198,11 +198,9 @@ def shop(request):
     }
     return render(request, 'shop.html', {'products':mydata})
 
-
-
 @login_required
 def cart(request):
-    return render(request, 'shopping.html')
+    return render(request, 'cart.html')
 
 @login_required
 def custTrans(request):
