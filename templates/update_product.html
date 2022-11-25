@@ -5,7 +5,7 @@
 <div class="form-body">
 
 <center> <h1>Update Product Record</h1> 
-<form action="prodSubmit/{{ up_product.id }}" method="post">
+<form action="/prodSubmit/{{ up_product.id }}" method="post">
 {% csrf_token %}
 {{form.as_p}}
     Product Name:<br>

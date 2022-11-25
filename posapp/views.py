@@ -415,7 +415,9 @@ def vendSubmit(request, id):
   name = request.POST['name']
   address = request.POST['address']
   category_id = request.POST['category_id']
+  need_order = request.POST['need_order']
   member = Vendor.objects.get(id=id)
+  member.need_order = need_order
   member.name = name
   member.address = address
   member.category_id = category_id
@@ -430,6 +432,22 @@ def updateCategory(request, id):
     'up_category': mymember,
   }
   return HttpResponse(template.render(context, request))
+
+@login_required()
+def categorySubmit(request, id):
+  id = request.POST['id']
+  name = request.POST['name']
+#   description = request.POST['description']
+  date_updated = request.POST['date_updated']
+  
+  member = Category.objects.get(id=id)
+  member.id = id
+  member.name = name
+#   member.description = description
+  member.date_updated = date_updated
+  
+  member.save()
+  return HttpResponseRedirect(reverse('catTable'))
 
 def buyProd(request, id):
     product = Products.objects.get(id=id)

@@ -5,7 +5,7 @@
 <div class="form-body">
 
 <center> <h1>Update Employee Record</h1> 
-<form action="custSubmit/{{ up_customer.id }}" method="post">
+<form action="/custSubmit/{{ up_customer.id }}" method="post">
 {% csrf_token %}
 {{form.as_p}}
 First Name:<br>
