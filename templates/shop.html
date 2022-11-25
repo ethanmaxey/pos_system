@@ -1,39 +1,80 @@
 {% extends 'base.html' %}
 {% block content %}
+  <section id="shop" class="my-5 py-5">
+    <div class="container mt-5 py-5">
+      <h3>Our Products</h3>
+      <hr>
+      <p>Here you can check out our products</p>
+    </div>
+    <div class="row mx-auto container">
+
+
+     {% for product in products %}
+
+      <div onclick="#" class="product text-center col-lg-3 col-md-4 col-sm-12">
+        <img class="img-fluid mb-3" src="https://as1.ftcdn.net/v2/jpg/03/11/87/52/1000_F_311875255_d57wDCwlZxdtOEwsnmXLHkV1r29i1R2U.jpg"/>
+        <div class="star">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <h5 class="p-name">{{ product.name }}</h5>
+        <h4 class="p-price">${{ product.price }}</h4>
+        <a  class="btn shop-buy-btn btn-success" href="<?php echo "single_product.php?product_id=".$row['product_id'];?>">Buy Now</a>
+      </div>
+     {% endfor %}
+
+
+
+{% comment %} Page number html below: {% endcomment %}
+      {% comment %} <nav aria-label="Page navigation example" class="mx-auto">
+        <ul class="pagination mt-5 mx-auto">
+          
+          <li class="page-item <?php if($page_no<=1){echo 'disabled';}?> ">
+               <a class="page-link" href="<?php if($page_no <= 1){echo '#';}else{ echo "?page_no=".($page_no-1);} ?>">Previous</a>
+          </li>
+
+
+          <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
+          <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
+
+          
+            <li class="page-item"><a class="page-link" href="#">...</a></li>
+            <li class="page-item"><a class="page-link" href="<?php echo "?page_no=".$page_no;?>"><?php echo $page_no;?></a></li>
+         
+
+
+
+          <li class="page-item <?php if($page_no >=  $total_no_of_pages){echo 'disabled';}?>">
+                 <a class="page-link" href="<?php if($page_no >= $total_no_of_pages ){echo '#';} else{ echo "?page_no=".($page_no+1);}?>">Next</a></li>
+         </ul>
+      </nav> {% endcomment %}
+    </div>
+  </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} OLD SHOP PAGE BEGIN {% endcomment %}
+
+{% comment %} {% extends 'base.html' %}
+{% block content %}
   <center>
     <strong><a class="add-btn" href="/cart"><button type="button" class="btn btn-success">Go To Cart</button></a></strong>
   </center>
-  
-  {% comment %} <div class="container d-flex justify-content-center mt-50 mb-50">
-    <div class="row">
-      <div class="col-xs-4 mt-2">
-        {% for prod in products %} 
-        <div class="card style="width: 18rem;"">
-          <div class="card-body">
-            <div class="card-img-actions">
-              <img src="https://cdn-icons-png.flaticon.com/512/1170/1170577.png" class="card-img img-fluid" width="96" height="350" alt="" />
-            </div>
-          </div>
-          <div class="card-body bg-light text-center">
-            <div class="mb-2">
-              <h6 class="font-weight-semibold mb-2"><a href="#" class="text-default mb-2" data-abc="true"></a>{{prod.name}}</h6>
-
-              <a href="#" class="text-muted" data-abc="true">{{prod.product_name}}</a>
-            </div>
-
-            <h3 class="mb-0 font-weight-semibold">{{prod.price}}</h3>
-            
-            <div>
-              <i class="fa fa-star star">{{prod.description}}</i>
-              <i class="fa fa-star star">{{prod.price}}</i>
-              <i class="fa fa-star star"></i>
-              <i class="fa fa-star star"></i>
-            </div>
-            <button type="button" class="btn bg-cart btn-success"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-            {% endfor %}
-          </div>
-        </div>
-      </div> {% endcomment %}
 <div class="container">
   <div class="row">
       {% for product in products %}
@@ -50,4 +91,10 @@
 </div>
 {% endfor %}
       
-{% endblock %}
+{% endblock %} {% endcomment %}
+{% comment %} OLD SHOP PAGE END {% endcomment %}
+
+
+
+
+  
