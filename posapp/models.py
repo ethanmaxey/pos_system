@@ -159,7 +159,7 @@ class Vendor(models.Model):
     name = models.TextField()
     address = models.TextField(blank=True, null=True)
     category_id = models.BigIntegerField()
-    need_order = models.BooleanField()
+    need_order = models.IntegerField()
 
     class Meta:
         managed = False
