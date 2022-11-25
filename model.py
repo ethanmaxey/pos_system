@@ -8,13 +8,18 @@
 from django.db import models
 
 
-class Vendor(models.Model):
+class Products(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.TextField()
-    address = models.TextField(blank=True, null=True)
-    category_id = models.BigIntegerField()
-    need_order = models.IntegerField()
+    description = models.TextField()
+    price = models.FloatField()
+    date_added = models.DateTimeField()
+    date_updated = models.DateTimeField()
+    category_id = models.ForeignKey('Category', models.DO_NOTHING)
+    amount = models.IntegerField()
+    image = models.TextField(blank=True, null=True)
+    vendor_id = models.ForeignKey('Vendor', models.DO_NOTHING)
 
     class Meta:
         managed = False
-        db_table = 'vendor'
+        db_table = 'products'

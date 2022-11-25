@@ -130,10 +130,12 @@ class Products(models.Model):
     name = models.TextField()
     description = models.TextField()
     price = models.FloatField()
-    date_added = models.DateField()
-    date_updated = models.DateField()
-    category_id = models.ForeignKey(Category, models.DO_NOTHING)
+    date_added = models.DateTimeField()
+    date_updated = models.DateTimeField()
+    category_id = models.ForeignKey('Category', models.DO_NOTHING)
     amount = models.IntegerField()
+    image = models.TextField(blank=True, null=True)
+    vendor_id = models.ForeignKey('Vendor', models.DO_NOTHING)
 
     class Meta:
         managed = False

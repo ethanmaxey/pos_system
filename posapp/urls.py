@@ -55,6 +55,7 @@ urlpatterns = [
     path('buyProd/<int:id>', views.buyProd, name='buyProd'),
 
     path('shop/', views.shop, name='shop'),
+    path('cart/', views.cart, name='cart'),
     
 
     # path('pie_chart/',views.pie_chart, name="pie_chart"),
