@@ -51,6 +51,8 @@ urlpatterns = [
     path('updateCategory/<int:id>', views.updateCategory, name='updateCategory'),
     
     # path('vreg/', views.vreg, name='vreg'),
+    path('buyProd/<int:id>', views.buyProd, name='buyProd'),
+
     path('shop/', views.shop, name='shop'),
     
 

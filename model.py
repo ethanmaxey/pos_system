@@ -119,11 +119,11 @@ class Transactions(models.Model):
 
 
 class Vendor(models.Model):
-    id = models.BigAutoField(primary_key=True)
+    id = models.BigIntegerField(primary_key=True)
     name = models.TextField()
-    status = models.IntegerField()
     address = models.TextField(blank=True, null=True)
     category_id = models.BigIntegerField()
+    needorder = models.BooleanField()
 
     class Meta:
         managed = False

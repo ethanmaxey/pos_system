@@ -12,6 +12,7 @@ from .models import Products, AuthUser, Transactions, Category, Vendor
 from django.template import loader
 from django.urls import reverse
 from django.contrib import messages
+import time
 # from cart.cart import Cart
 
 # Create your views here.
@@ -156,12 +157,12 @@ def add_vendors(request):
     submitted = False
     
     if request.method == 'POST':
-        form =VendorForm(request.POST)
+        form = VendorForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/vendTable')
     else:
-        form =VendorForm()
+        form = VendorForm()
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'vendorAdd.html', {'form': form, 'submitted': submitted})
@@ -429,10 +430,17 @@ def updateCategory(request, id):
   }
   return HttpResponse(template.render(context, request))
 
-def buyProd(id):
+def buyProd(request, id):
     product = Products.objects.get(id=id)
+    
+    var1 = product.amount
     product.amount = product.amount - 1
+    var2 = product.amount
+    
+    if (var1 == 50 and var2 == 49):
+        messages.success(request, 'Low on product, order sent to supplier! Refresh page to clear message.')
     product.save()
+    return HttpResponseRedirect(reverse('prodTable'))
 
 
 #IAN'S CODE
