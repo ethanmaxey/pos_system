@@ -37,7 +37,7 @@ urlpatterns = [
 
     ## Updating Things
     path('updateEmp/<int:id>/', views.updateEmp, name='updateEmp'),
-    path('updateEmp/<int:id>/empSubmit/', views.empSubmit, name='empSubmit'),
+    path('empSubmit/<int:id>/', views.empSubmit, name='empSubmit'),
     
     path('updateCust/<int:id>/', views.updateCust, name='updateCust'),
     path('updateCust/<int:id>/custSubmit/', views.custSubmit, name='custSubmit'),
