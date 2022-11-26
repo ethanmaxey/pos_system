@@ -14,3 +14,12 @@
 7. Let Ethan know you have changes that are ready to be merged
 8. Ethan will test your changes locally.
 9. Ethan will merge your branch into `master`.
+
+## MySQL Migrations
+
+1. Create schema in database and load all tables, triggers etc.
+2. Make sure models.py does not have any classes in them.
+3. Make sure you comment out everything imported from models.py in views.py.
+4. Run 'python manage.py migrate'
+5. Run 'python manage.py inspectdb > (filename).py' . In the (filename ) put any name you like. This file will be created wherever your models.py is located. This basically pulls all tables from database and create classes from it. 
+6. Copy/paste the classes ypu want from the created file to models.py. the classes will have meta field with db_table:'tablename' inside each of them. 
