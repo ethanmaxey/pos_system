@@ -33,27 +33,33 @@ class CustomerForm(UserCreationForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Products
-        fields = '__all__'
+        fields = ['id', 'name', 'description', 'price', 'date_added', 'date_updated', 'category_id', 'amount', 'image', 'vendor_id']
         labels = {
-            'product_id': '',
-            'product_name': '',
+            'id': '',
+            'name': '',
+            'description': '',
             'price': '',
-            'category': '',
-            'prod_amount': '',
-            'instock': '',
+            'date_added': '',
+            'date_updated': '',
+            'category_id': '',
+            'amount': '',
+            'image': '',
+            'vendor_id': '',
          }
 
         widgets = {
-            'product_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product ID: 0000-9999'}),
-            'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'}),
-            'price': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Price: 00.00 - 1000.00'}),
-            'category': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category'}),
-            'prod_amount': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
-            'instock': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Instock: 1 if yes, 0 if no'}),
-            
-         }
-
-
+            'id': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Product ID: 0000-9999'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Name'}),
+            'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product Description'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Price: 00.00 - 1000.00'}),
+            'date_added': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
+            'date_updated': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Updated'}),
+            'category_id': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Category ID'}),
+            'amount': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
+            'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image'}),
+            'vendor_id': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Vendor ID'}),
+        }
+        
 class EmployeeForm(UserCreationForm):
     # username = forms.CharField(required = True)
     email = forms.EmailField(required = True)

@@ -28,6 +28,10 @@
     <input name="dateupdated" value="{% now "m/d/Y" %}">
     <br><br>
 
+    Vendor ID:<br>
+    <input name="vendor_id" value="{{ up_product.vendor_id }}">
+    <br><br>
+
     <input type = 'submit' value = 'Submit' class = 'btn btn-success'>
 </form>
 {% endblock %}
