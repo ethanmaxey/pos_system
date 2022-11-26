@@ -76,19 +76,19 @@ class EmployeeForm(UserCreationForm):
 class CategoryForm(ModelForm):
     class Meta:
         model = Category
-        fields = 'name', 'description', 'date_added'#, 'date_updated'
+        fields = 'name', 'description', 'date_added', 'date_updated'
         labels = {
             'name': '',
             'description': '',
             'date_added': '',
-            # 'date_updated': '',
+            'date_updated': '',
          }
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Category Name'}),
             'description': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Description'}),
-            'date_added': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'})
-            # 'date_updated': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'})
+            'date_added': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Added'}),
+            'date_updated': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Updated'})
          }
 
 
