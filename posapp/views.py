@@ -456,6 +456,7 @@ def buyProd(request, id):
     
     if (var1 == 50 and var2 == 49):
         messages.success(request, 'Low on product, order sent to supplier! Refresh page to clear message.')
+        
     product.save()
     return HttpResponseRedirect(reverse('prodTable'))
 

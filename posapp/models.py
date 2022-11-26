@@ -127,11 +127,11 @@ class DjangoMigrations(models.Model):
 
 class Products(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.TextField()
-    description = models.TextField()
+    name = models.CharField(max_length=24)
+    description = models.CharField(max_length=24)
     price = models.FloatField()
-    date_added = models.DateTimeField()
-    date_updated = models.DateTimeField()
+    date_added = models.DateField()
+    date_updated = models.DateField()
     category_id = models.ForeignKey('Category', models.DO_NOTHING)
     amount = models.IntegerField()
     image = models.TextField(blank=True, null=True)
