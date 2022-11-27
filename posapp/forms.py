@@ -33,7 +33,7 @@ class CustomerForm(UserCreationForm):
 class ProductForm(ModelForm):
     class Meta:
         model = Products
-        fields = ['id', 'name', 'description', 'price', 'date_added', 'date_updated', 'category_id', 'amount', 'image', 'vendor_id']
+        fields = ['id', 'name', 'description', 'price', 'date_added', 'date_updated', 'category_id', 'amount', 'vendor_id']
         labels = {
             'id': '',
             'name': '',
@@ -43,7 +43,7 @@ class ProductForm(ModelForm):
             'date_updated': '',
             'category_id': '',
             'amount': '',
-            'image': '',
+            # 'image': '',
             'vendor_id': '',
          }
 
@@ -56,7 +56,7 @@ class ProductForm(ModelForm):
             'date_updated': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Date Updated'}),
             'category_id': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Category ID'}),
             'amount': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Amount'}),
-            'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image'}),
+            # 'image': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Image'}),
             'vendor_id': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Vendor ID'}),
         }
         
