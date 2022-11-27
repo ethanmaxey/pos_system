@@ -113,3 +113,19 @@ class VendorForm(ModelForm):
             'need_order': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Need Order: True/False'})
          }
 
+
+
+class CheckoutForm(forms.Form):
+    shipping_address = forms.CharField(required=False)
+    shipping_address2 = forms.CharField(required=False)
+    shipping_zip = forms.CharField(required=False)
+
+    billing_address = forms.CharField(required=False)
+    billing_address2 = forms.CharField(required=False)
+    billing_zip = forms.CharField(required=False)
+
+    same_billing_address = forms.BooleanField(required=False)
+    set_default_shipping = forms.BooleanField(required=False)
+    use_default_shipping = forms.BooleanField(required=False)
+    set_default_billing = forms.BooleanField(required=False)
+    use_default_billing = forms.BooleanField(required=False)

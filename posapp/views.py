@@ -206,6 +206,10 @@ def cart(request):
     return render(request, 'cart.html')
 
 @login_required
+def checkout(request):
+    return render(request, 'checkout.html')
+
+@login_required
 def custTrans(request):
     return render(request, 'CustomerReport/CustomerLanding.html')
 
