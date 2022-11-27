@@ -13,6 +13,7 @@ from django.template import loader
 from django.urls import reverse
 from django.contrib import messages
 import time
+from poscart.forms import CartAddProductForm 
 # from cart.cart import Cart
 
 # Create your views here.
@@ -192,15 +193,21 @@ def custRep(request):
 @login_required
 def shop(request):
     mydata =Products.objects.all()
+    cart_product_form = CartAddProductForm()
     template = loader.get_template('shop.html')
     context = {
         'products': mydata,
     }
-    return render(request, 'shop.html', {'products':mydata})
+    return render(request, 'shop.html', {'products':mydata,
+                    'cart_product_form':cart_product_form})
 
 @login_required
 def cart(request):
     return render(request, 'cart.html')
+
+@login_required
+def checkout(request):
+    return render(request, 'checkout.html')
 
 @login_required
 def custTrans(request):
@@ -465,45 +472,48 @@ def buyProd(request, id):
 #this is the cart section
 
 #Cart is not defined in pylance
-@login_required(login_url="/users/login")
-def cart_add(request, id):
-    cart = Cart(request)
-    products = products.objects.get(id=id)
-    cart.add(productsproducts=productsproducts)
-    return redirect("home")
+# @login_required(login_url="/users/login")
+# def cart_add(request, id):
+#     cart = Cart(request)
+#     products = products.objects.get(id=id)
+#     cart.add(productsproducts=productsproducts)
+#     return redirect("home")
 
 
-@login_required(login_url="/users/login")
-def item_clear(request, id):
-    cart = Cart(request)
-    products =products.objects.get(id=id)
-    cart.remove(productsproducts)
-    return redirect("cart_detail")
+# @login_required(login_url="/users/login")
+# def item_clear(request, id):
+#     cart = Cart(request)
+#     products =products.objects.get(id=id)
+#     cart.remove(productsproducts)
+#     return redirect("cart_detail")
 
 
-@login_required(login_url="/users/login")
-def item_increment(request, id):
-    cart = Cart(request)
-    products =products.objects.get(id=id)
-    cart.add(productsproducts=productsproducts)
-    return redirect("cart_detail")
+# @login_required(login_url="/users/login")
+# def item_increment(request, id):
+#     cart = Cart(request)
+#     products =products.objects.get(id=id)
+#     cart.add(productsproducts=productsproducts)
+#     return redirect("cart_detail")
 
 
-@login_required(login_url="/users/login")
-def item_decrement(request, id):
-    cart = Cart(request)
-    products =products.objects.get(id=id)
-    cart.decrement(productsproducts=productsproducts)
-    return redirect("cart_detail")
+# @login_required(login_url="/users/login")
+# def item_decrement(request, id):
+#     cart = Cart(request)
+#     products =products.objects.get(id=id)
+#     cart.decrement(productsproducts=productsproducts)
+#     return redirect("cart_detail")
 
 
-@login_required(login_url="/users/login")
-def cart_clear(request):
-    cart = Cart(request)
-    cart.clear()
-    return redirect("cart_detail")
+# @login_required(login_url="/users/login")
+# def cart_clear(request):
+#     cart = Cart(request)
+#     cart.clear()
+#     return redirect("cart_detail")
 
 
-@login_required(login_url="/users/login")
-def cart_detail(request):
-    return render(request, 'cart/cart_detail.html')
+# @login_required(login_url="/users/login")
+# def cart_detail(request):
+#     return render(request, 'cart/cart_detail.html')
+
+
+

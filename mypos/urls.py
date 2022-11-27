@@ -21,10 +21,12 @@ from posapp import views
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 
 urlpatterns = [
+    path('cart/',include('poscart.urls', namespace='cart')),
     path('', include('posapp.urls')),
     path('admin/', admin.site.urls),
     # path(r'^favicon\.ico$',RedirectView.as_view(url='/static/images/favicon.ico')),
     
     #   This came from Tyler's project (I assume it is for authentication)
     path('', include('django.contrib.auth.urls')),
+    
 ] 

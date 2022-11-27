@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'cart',
+    'poscart.apps.PoscartConfig',
 ]
 
 CART_SESSION_ID = 'cart'
@@ -164,3 +165,4 @@ STATICFILES_DIRS = [os.path.join(ROOT_PATH, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = '/login'
+CART_SESSION_ID = 'cart'
