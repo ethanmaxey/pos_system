@@ -22,7 +22,11 @@
         </div>
         <h5 class="p-name">{{ product.name }}</h5>
         <h4 class="p-price">${{ product.price }}</h4>
-        <a  class="btn shop-buy-btn btn-success" href="<?php echo "single_product.php?product_id=".$row['product_id'];?>">Buy Now</a>
+        <form action = "{% url "cart:cart_add" product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input type = "submit" value="Add To Cart">
+        </form>
       </div>
      {% endfor %}
 
