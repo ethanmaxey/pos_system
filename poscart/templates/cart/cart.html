@@ -8,15 +8,15 @@ Shopping Cart
 
 {% block content %}
 <h1> Shopping Cart</h1>
-<table class="cart">
+<table width=1200px class="table table-inverse">
     <thead>
         <tr>
-            <th>Image</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Remove</th>
-            <th>Unit Price</th>
-            <th>Price</th>
+            <th class="table-primary">Image</th>
+            <th class="table-primary">Product</th>
+            <th class="table-primary">Quantity</th>
+            <th class="table-primary">Remove</th>
+            <th class="table-primary">Unit Price</th>
+            <th class="table-primary">Price</th>
         </tr>
     </thead>
     <tbody>
@@ -24,12 +24,23 @@ Shopping Cart
     {% with item.product as product %}
     <tr>
         <td>
-            <a href = "{{product.get_absolute_url}}">
-            Image Here
-            </a>
+            <img width="100px" src="https://as1.ftcdn.net/v2/jpg/03/11/87/52/1000_F_311875255_d57wDCwlZxdtOEwsnmXLHkV1r29i1R2U.jpg">
         </td>
         <td>{{product.name}}</td>
-        <td>{{item.quantity}}</td>
+        {% comment %} <td>{{item.quantity}}</td> {% endcomment %}
+        <td>
+                                    <div class="input-group mb-3" style="max-width: 120px;">
+                                        <div class="input-group-prepend">
+                                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                {% csrf_token %}
+                                                {{ item.update_quantity_form.quantity }}
+                                                {{ item.update_quantity_form.override }}
+                                                <input class="btn btn-outline-primary js-btn-plus" type="submit"
+                                                    value="Update">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
         <td>
             <form action = "{% url "cart:cart_remove" product.id %}" method = "post">
             <input type="submit" value ="Remove">
@@ -37,14 +48,22 @@ Shopping Cart
             </form>
         </td>
         <td class = "num">${{item.price}}</td>
-        {% comment %} <td class = "num">${{item.total_price}}</td> {% endcomment %}
+        <td class = "num">${{item.total_price}}</td>
     </tr>
     {% endwith %}
     {% endfor %}
     <tr class="total">
         <td>Total</td>
         <td colspan="4"></td>
-        {% comment %} <td class="num">${{ cart.get_total_price }}</td> {% endcomment %}
+        <td class="num">${{ cart.get_total_price }}</td>
     </tbody>
 </table>
+
+<div class="row">
+            <div class="col-md-6">
+                <div class="row mb-5">
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-primary btn-sm btn-block">Checkout</button>
+                    </div>
+                </div>
 {% endblock %}

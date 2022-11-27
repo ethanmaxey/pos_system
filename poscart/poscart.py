@@ -16,10 +16,11 @@ class Cart(object):
         product_id = str(product.id)
         if product_id not in self.cart:
             self.cart[product_id]= {'quantity':0, 'price':str(product.price)}
-            if override_quantity:
-                self.cart[product_id]['quantity'] = quantity
-            else:
-                self.cart[product_id]['quantity'] += quantity
+        if override_quantity:
+            self.cart[product_id]['quantity'] = quantity
+        else:
+            self.cart[product_id]['quantity'] += quantity
+        self.save()
 
     def save(self):
         self.session.modified = True
@@ -48,7 +49,10 @@ class Cart(object):
 
     
     def get_total_price(self):
-        return sum(Decimal(item['price']*item['quantity'] for item in self.cart.values()))
+        """
+        calculate the total cost of the items in the cart
+        """
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
 
     def clear(self):
