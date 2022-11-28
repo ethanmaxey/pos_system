@@ -129,11 +129,9 @@ class Products(models.Model):
 
 class Transactions(models.Model):
     id = models.IntegerField(primary_key=True)
-    subtotal = models.CharField(max_length=45)
     grandtotal = models.CharField(max_length=45)
-    tax = models.CharField(max_length=45)
     dateadded = models.CharField(max_length=45)
-    empid = models.IntegerField()
+    custid = models.IntegerField()
     category = models.ForeignKey(Category, models.DO_NOTHING)
 
     class Meta:

@@ -15,9 +15,7 @@
             <thead class="thead-primary">
                 <tr>
                     <th class="table-primary">Transaction ID</th>
-                    <th class="table-primary">Employee ID</th>
-                    <th class="table-primary">Subtotal</th>
-                    <th class="table-primary">Tax</th>
+                    <th class="table-primary">Customer ID</th>
                     <th class="table-primary">Grandtotal</th>
                     <th class="table-primary">Date Added</th>
                 </tr>
@@ -26,9 +24,7 @@
                 {% for pro in transaction %} 
                 <tr>
                     <td>{{pro.id}}</td>
-                    <td>{{pro.empid}}</td>
-                    <td>{{pro.subtotal}}</td>
-                    <td>{{pro.tax}}</td>
+                    <td>{{pro.custid}}</td>
                     <td>{{pro.grandtotal}}</td>
                     <td>{{pro.dateadded}}</td>
                 </tr>
