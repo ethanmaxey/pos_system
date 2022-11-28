@@ -128,11 +128,13 @@ class Products(models.Model):
 
 
 class Transactions(models.Model):
-    id = models.IntegerField(primary_key=True)
+    subtotal = models.CharField(max_length=45)
     grandtotal = models.CharField(max_length=45)
+    tax = models.CharField(max_length=45)
     dateadded = models.CharField(max_length=45)
-    custid = models.IntegerField()
-    category = models.ForeignKey(Category, models.DO_NOTHING)
+    empid = models.ForeignKey('AuthUser', models.DO_NOTHING, db_column='empid')
+    category = models.ForeignKey('Category', models.DO_NOTHING)
+    custid = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
