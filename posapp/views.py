@@ -200,6 +200,8 @@ def shop(request):
     }
     return render(request, 'shop.html', {'products':mydata,
                     'cart_product_form':cart_product_form})
+    return render(request, 'home.html', {'products':mydata,
+                    'cart_product_form':cart_product_form})
 
 @login_required
 def cart(request):

@@ -8,20 +8,22 @@
     <center>
         {% comment %} <h1>Welcome to your account, {{user.username}}!</h1> {% endcomment %}
     </center>
-<iframe src="https://app.trevor.io/share/dashboard/8e04ec23-094f-4a6c-9221-2c7a6af514c6/load.html?pin=4eaab"
+{% comment %} <iframe src="https://app.trevor.io/share/dashboard/8e04ec23-094f-4a6c-9221-2c7a6af514c6/load.html?pin=4eaab"
   style="width: 100%; height: 600px;"
   frameborder="0"
   allowfullscreen>
+</iframe> {% endcomment %}
+
+<iframe 
+ style="width: 100%; height: 800px; border: 1px solid #ddd; border-radius: 4px;" 
+ src="https://app.trevor.io/share/dashboard/f3e7a214-dc79-4c05-8b49-914bf789a77e/load.html?pin=fe965"
+>
 </iframe>
-{% comment %} <iframe 
- style="width: 100%; height: 100%; border: 1px solid #ddd; border-radius: 4px;" 
- src="https://app.trevor.io/share/dashboard/8e04ec23-094f-4a6c-9221-2c7a6af514c6/load.html?pin=4eaab"
-> {% endcomment %}
-</iframe>
+
     <div class="row">
       {% comment %} Employee Hours Pie Chart Begin {% endcomment %}
       <div id="container" style="width: 40%;" class="col-xs-6">
-        <h3>Top products by units sold</h3>
+        <h3>Products By Prices</h3>
         <canvas id="hour-chart"></canvas>
         <script>
           var config = {
@@ -78,7 +80,7 @@
     </div>
 
     {% comment %} Bar Chart {% endcomment %}
-  <div id="bar-container"  class="col-md-8 offset-md-1 w-25" border=1>
+  {% comment %} <div id="bar-container"  class="col-md-8 offset-md-1 w-25" border=1>
     <h3> Sales by category</h3>
     <canvas id="bar-chart"></canvas>
     <script>
@@ -103,7 +105,7 @@
         window.mybar = new Chart(etx, config2);
 
     </script>
-  </div>
+  </div> {% endcomment %}
 </div>
 
 {%elif user.is_staff%}
@@ -114,7 +116,6 @@
     </center>
     <center>
       <div id="container" style="width: 40%;" class="col-xs-6">
-        <h3>Sales Made</h3>
         <canvas id="hour-chart"></canvas>
         <script>
           var config = {
@@ -145,8 +146,5 @@
             <center>
                 <h1>Welcome to your account, {{user.username}}!</h1>
             </center>
-        <center>
-            <h3>Customer Data here</h3>
-        </center>
     {%endif%}
 {% endblock %} 
