@@ -8,7 +8,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/home">
             <span data-feather="shopping-cart" class="align-text-bottom"></span>
-            Dashboard
+            Reports
           </a>
         </li>
         {% if user.is_superuser %}
@@ -78,72 +78,32 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/shop">
-              <span data-feather="home" class="align-text-bottom"></span>
-              Shop
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/cart">
-              <span data-feather="file" class="align-text-bottom"></span>
-              Cart
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/transactionTable">
               <span data-feather="home" class="align-text-bottom"></span>
               Transactions
             </a>
           </li>
-          {% comment %} <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/one">
+
+          {% comment %} Add a black line here {% endcomment %}
+          <hr style="color:black" />
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/shop">
               <span data-feather="home" class="align-text-bottom"></span>
-              Report #1
+              Shop!
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/two">
-              <span data-feather="home" class="align-text-bottom"></span>
-              Report #2
+            <a class="nav-link" href="/cart">
+              <span data-feather="file" class="align-text-bottom"></span>
+              View Cart
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/three">
-              <span data-feather="home" class="align-text-bottom"></span>
-              Report #3
-            </a>
-          </li> {% endcomment %}
           <br><br><br><br><br><br><br><br><br><br><br>
           
         {% endif %}
       </ul>
     </div>
   </nav>
-  {% comment %} {% elif user.is_active %}
-  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-    <div class="position-sticky pt-3 sidebar-sticky">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" href="/EmpHome">
-            <span data-feather="shopping-cart" class="align-text-bottom"></span>
-            Main Page
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/shop">
-            <span data-feather="home" class="align-text-bottom"></span>
-            Shop
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/custTrans">
-            <span data-feather="file" class="align-text-bottom"></span>
-            Transactions
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-{% endif %} {% endcomment %}
 {% endif %}
 <!-- End side bar -->
