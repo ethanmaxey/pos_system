@@ -1,5 +1,12 @@
 # Point of Sale Project – Group 1
 
+## To Access the Website
+
+pos4.azurewebsites.net
+
+Username: admin
+Password: password#1
+
 ## Type of Database Application we have Built<br>
 In this project, we have developed a point-of-sale database application for a grocery store that sells the different kinds of produce you would typically see at a grocery store. 
 ## Types of Data that can be Manipulated<br>
