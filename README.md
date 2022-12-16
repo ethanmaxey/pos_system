@@ -4,7 +4,7 @@
 
 [pos4.azurewebsites.net](https://pos4.azurewebsites.net/)
 
-Username: admin
+Username: admin <br>
 Password: password#1
 
 ## Type of Database Application we have Built<br>
