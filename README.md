@@ -2,7 +2,7 @@
 
 ## To Access the Website
 
-pos4.azurewebsites.net
+[pos4.azurewebsites.net](https://pos4.azurewebsites.net/)
 
 Username: admin
 Password: password#1
